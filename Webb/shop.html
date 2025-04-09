@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="Style.CSS" />
+    <title>Shop</title>
+</head>
+
+<body>
+    <!--header-->
+    <header>
+        <a href="index.HTML" id="logo"><span>Elec</span>tronics</a>
+        <nav class="navbar">
+            <div class="navbar-links">
+                <a href="index.HTML">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="about.html">About Us</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html" id="shape">Contact Us</a>
+            </div>
+            <div class="navbar-icon">
+                <a href="login.html" title="Login"><i class="fa fa-user"></i></a>
+                <a href="cart.html" title="Cart"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+        </nav>
+    </header>
+
+    <img src="/Webb/Img/dolls-computer-motherboard.jpg" alt="Remove it">
+    <!--footer-->
+    <footer class="page-footer">
+        <p>
+            &copy;<span id="date">2025</span>
+            <span class="footer-logo">HNU Electronics</span>
+            Build by <a href="">HNU</a>
+        </p>
+    </footer>
+
+    <script>
+        const getElement = (selector) => {
+            const element = document.querySelector(selector);
+            if (element) return element;
+            throw Error(
+                `Please double check your class names, there is no ${selector} class`
+            );
+        };
+        const linkss = getElement(".links");
+        const navBtnDOM = getElement(".nav-btn");
+
+        navBtnDOM.addEventListener("click", () => {
+            linkss.classList.toggle("show-link");
+        });
+
+        const date = getElement("#date");
+        const currentYear = new Date().getFullYear();
+        date.textContent = currentYear;
+    </script>
+</body>
+
+</html>

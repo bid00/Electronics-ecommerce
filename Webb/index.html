@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Font Awesome 6 CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <!-- favicon -->
     <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="Style.CSS" />
@@ -29,15 +31,167 @@
             </div>
         </nav>
     </header>
+    <main class="page">
+        <div class="hero">
+            <div class="hero-container">
+                <div class="hero-text">
+                    <h1>Welcome to HNU <span>Elec</span>tronics</h1>
+                    <p>Your one-stop shop for all <span>Electronic</span> needs.</p>
+                </div>
+                <!--Search-->
+                <div class="search">
+                    <form action="javascript:void(0);">
+                        <input type="text" id="search" placeholder="Search for products..." />
+                        <button type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+                <!--end Search-->
+                <a href="shop.html" class="btn">Shop Now</a>
+            </div>
+        </div>
+        <!-- Training Kits Section -->
+        <section class="kits-section">
+            <h2>Explore our Training Kits for Microcontrollers</h2>
+            <h3>Perfect for Electronic Labs or Personal Learning <i class="fas fa-microchip"></i></h3>
 
-    <img src="/Webb/Img/dolls-computer-motherboard.jpg" alt="Remove it">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <!-- Kit Card 1 -->
+                    <div class="swiper-slide">
+                        <div class="kit-card">
+                            <img src="/Webb/Img/[KIT.PIC.BETA.MINI] PIC Development Kit & Training (Betamini).jpg"
+                                alt="PIC Development Kit">
+                            <h4>PIC Development Kit & Training (Betamini)</h4>
+                            <div class="kit-info">
+                                <span class="price">1,500.00 EGP</span>
+                            </div>
+                            <button class="buy-btn" title="Add to Cart"><i class="fa fa-cart-shopping"></i>Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Kit Card 2 -->
+                    <div class="swiper-slide">
+                        <div class="kit-card">
+                            <img src="/Webb/Img/[KIT.RP2040.PICO.TRAINING] Raspberry Pi Pico Development & Training Kit Based on ARM RP2040.jpg"
+                                alt="Raspberry Pi Pico Kit">
+                            <h4>Raspberry Pi Pico Development Kit (RP2040)</h4>
+                            <div class="kit-info">
+                                <span class="price">1,800.00 EGP</span>
+                            </div>
+                            <button class="buy-btn" title="Add to Cart"><i class="fa fa-cart-shopping"></i>Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Kit Card 3 -->
+                    <div class="swiper-slide">
+                        <div class="kit-card">
+                            <img src="/Webb/Img/[KIT.ARM.PANDA.PLUS] Kit ARM (Panda+) Development & Training System Based on STM32F401RCT6.jpg"
+                                alt="ARM (Panda+) kit">
+                            <h4>Kit ARM (Panda+) Development & Training System Based on STM32F401RCT6</h4>
+                            <div class="kit-info">
+                                <span class="price">1,900.00 EGP</span>
+                            </div>
+                            <button class="buy-btn" title="Add to Cart"><i class="fa fa-cart-shopping"></i>Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Kit Card 4 -->
+                    <div class="swiper-slide">
+                        <div class="kit-card">
+                            <img src="/Webb/Img/4.jpg" alt="ARM (Panda) kit">
+                            <h4>Kit ARM (Panda) Development & Training System Based on STM32F103C8T6</h4>
+                            <div class="kit-info">
+                                <span class="price">1,750.00 EGP</span>
+                            </div>
+                            <button class="buy-btn" title="Add to Cart"><i class="fa fa-cart-shopping"></i>Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Kit Card 5 -->
+                    <div class="swiper-slide">
+                        <div class="kit-card">
+                            <img src="/Webb/Img/5.jpg" alt="FPGA EP4CE6 Development Board">
+                            <h4>FPGA EP4CE6 Development Board ALTERA IV</h4>
+                            <div class="kit-info">
+                                <span class="price">6,000.00 EGP</span>
+                            </div>
+                            <button class="buy-btn" title="Add to Cart"><i class="fa fa-cart-shopping"></i>Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Kit Card 6 -->
+                    <div class="swiper-slide">
+                        <div class="kit-card">
+                            <img src="/Webb/Img/6.jpg" alt="Eta32-BIG Atmel AVR USB Development kit">
+                            <h4>Kit Eta32-BIG Atmel AVR USB Development & Training System - Based on ATMEGA32</h4>
+                            <div class="kit-info">
+                                <span class="price">3,150.00 EGP</span>
+                            </div>
+                            <button class="buy-btn" title="Add to Cart"><i class="fa fa-cart-shopping"></i>Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-controls">
+                    <!-- Custom Arrow Buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <!--Pagination -->
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+                
+            </div>
+        </section>
+        <!-- End of Training Kits Section -->
+
+        <div class="process">
+            <div class="process-title">
+                <h2>How It Works</h2>
+            </div>
+            <div class="process-container">
+                <div class="process-item">
+                    <i class="fa fa-user"></i>
+                    <h3>Sign in</h3>
+                    <p>Enter your detailed contact information</p>
+                </div>
+                <div class="process-item">
+                    <i class="fa fa-search"></i>
+                    <h3>Search</h3>
+                    <p>Find the products you need.</p>
+                </div>
+                <div class="process-item">
+                    <i class="fa fa-shopping-cart"></i>
+                    <h3>Add to Cart</h3>
+                    <p>Add your favorite items to the cart.</p>
+                </div>
+                <div class="process-item">
+                    <i class="fa fa-credit-card"></i>
+                    <h3>Checkout</h3>
+                    <p>Complete your purchase securely.</p>
+                </div>
+            </div>
+        </div>
+    </main>
     <!--footer-->
     <footer class="page-footer">
-        <p>
-            &copy;<span id="date">2025</span>
-            <span class="footer-logo">HNU Electronics</span>
-            Build by <a href="">HNU</a>
-        </p>
+        <div class="footer-textp">
+            <p>
+                &copy;<span id="date">2025</span>
+                <span class="footer-logo">HNU Electronics</span>
+                Build by <a href="">HNU</a>
+            </p>
+        </div>
+        <hr>
+        <div class="footer-contact">
+            <h3>Follow HNU <span>Elec</span>tronics on</h3>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
     </footer>
 
     <script>
@@ -59,6 +213,38 @@
         const currentYear = new Date().getFullYear();
         date.textContent = currentYear;
     </script>
+    <script>
+        // JavaScript for live search functionality
+        const optionsEls = document.querySelectorAll(".option");
+        const searchInput = document.getElementById("search");
+
+        searchInput.addEventListener("input", function () {
+            const searchTerm = this.value.toLowerCase();
+            optionsEls.forEach(function (optionEl) {
+                const title = optionEl.querySelector("h5").textContent.toLowerCase();
+                const isMatch = title.includes(searchTerm);
+                optionEl.style.display = isMatch ? "block" : "none";
+            });
+        });
+    </script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 3,
+            spaceBetween: 10,
+            loop: true, 
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            autoplay: false
+        });
+    </script>
+    
 </body>
 
 </html>

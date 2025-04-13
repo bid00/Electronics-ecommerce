@@ -743,3 +743,130 @@ img {
     font-weight: bold;
     margin-bottom: 15px;
 }
+
+/* product page styles */
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.image-section {
+    flex: 1;
+    min-width: 300px;
+    max-width: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-section img {
+    width: 100%;
+    max-width: 700px;
+    border-radius: var(--borderRadius);
+    box-shadow: var(--shadow-3);
+}
+
+.info-section {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    background-color: var(--grey-100);
+    padding: 2rem;
+    border-radius: var(--borderRadius);
+    box-shadow: var(--shadow-2);
+}
+
+.productp-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--primary-800);
+    margin-bottom: 1rem;
+}
+
+.price {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--primary-600);
+    margin-bottom: 1rem;
+}
+
+.qty {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.qty input {
+    width: 60px;
+    padding: 0.3rem;
+    margin-left: 0.5rem;
+    border: 1px solid var(--primary-500);
+    border-radius: var(--borderRadius);
+    text-align: center;
+}
+
+.btn {
+    text-decoration: none;
+    background-color: var(--primary-500);
+    color: var(--white);
+    border: none;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn:hover {
+    background-color: var(--primary-300);
+    color: var(--primary-900);
+}
+
+.desc p {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+    color: var(--grey-700);
+}
+
+.desc span {
+    color: var(--primary-600);
+    font-weight: bold;
+}
+
+.details {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: var(--grey-800);
+    line-height: 1.6;
+}
+.specifications {
+    margin-top: 2rem;
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow-4);
+}
+
+.specifications h2 {
+    margin-top: 1rem;
+    color: var(--grey-700);
+    font-size: 1.4rem;
+    border-left: 4px solid var(--primary-600);
+    padding-left: 10px;
+}
+
+.specifications ul {
+    margin-left: 1.2rem;
+    list-style-type: disc;
+    padding-left: 1rem;
+    line-height: 1.6;
+}
+
+.specifications ul ul {
+    list-style-type: circle;
+}

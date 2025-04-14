@@ -40,7 +40,8 @@
             <div class="info-section">
                 <div class="productp-title">Kit ARM (Panda) Development & Training System Based on STM32F103C8T6</div>
                 <div class="details">
-                    With a Full Set of Accessories (OLED LCD + Blue Bill + ST LINK + Cable) Perfect for Electronic Labs or Personal Learning
+                    With a Full Set of Accessories (OLED LCD + Blue Bill + ST LINK + Cable) Perfect for Electronic Labs
+                    or Personal Learning
                 </div>
                 <div class="price">1,750.00 EGP</div>
 
@@ -49,19 +50,20 @@
                     <input type="number" value="1" min="1">
                 </div>
 
-                <a href="cart.html" class="btn">Add to Cart</a>
+                <a href="#" class="btn" onclick="addToCart(); event.preventDefault();">Add to Cart</a>
 
                 <div class="desc">
                     <p><strong>Internal Reference:</strong> DOUBLE.FACE.GL7445</p>
                     <p><strong>Shipping:</strong> 2-3 Business Days</p>
                     <p><strong>Pick up from:</strong> HNU <span>Elec</span>tronics</p>
                 </div>
-            
+
             </div>
             <div class="specifications">
                 <h2>General Description</h2>
-                <p>Panda kit is an ARM development kit based on Blue Pill module which supports 32-Bit ARM Cortex-M3 microprocessor STM32F103C8T6.</p>
-            
+                <p>Panda kit is an ARM development kit based on Blue Pill module which supports 32-Bit ARM Cortex-M3
+                    microprocessor STM32F103C8T6.</p>
+
                 <h2>Panda Kit Features</h2>
                 <ul>
                     <li>Supports Cortex-M3 (STM32F103C8T6).</li>
@@ -81,7 +83,7 @@
                     <li>USB/TTL serial converter CH340.</li>
                     <li>All GPIOs are brought out to pin headers.</li>
                 </ul>
-            
+
                 <h2>Package Includes</h2>
                 <ul>
                     <li>Panda Kit</li>
@@ -90,7 +92,7 @@
                     <li>0.96" 128x64 OLED display</li>
                     <li>USB cable A/B type</li>
                 </ul>
-            </div>    
+            </div>
         </div>
 
     </main>
@@ -114,6 +116,30 @@
             </div>
         </div>
     </footer>
+    <script>
+        function addToCart() {
+    const product = {
+        id: 1,
+        name: "Kit ARM Panda Board",
+        price: 50,
+        quantity: 1
+    };
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existing = cart.find(item => item.id === product.id);
+
+    if (existing) {
+        existing.quantity += 1;
+    } else {
+        cart.push(product);
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    // Optional: Redirect after adding
+    window.location.href = "cart.html";
+}
+
+    </script>
 
 </body>
 

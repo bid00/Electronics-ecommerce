@@ -30,7 +30,23 @@
         </nav>
     </header>
 
-    <img src="/Webb/Img/dolls-computer-motherboard.jpg" alt="Remove it">
+    <main class="page">
+        <div class="wrapper">
+            <div class="shop" id="cart-items">
+                <!-- Cart items will be dynamically rendered here -->
+            </div>
+            <div class="right-bar">
+                <p><span>Subtotal</span> <span id="subtotal">$0</span></p>
+                <hr>
+                <p><span>Tax (5%)</span> <span id="tax">$0</span></p>
+                <hr>
+                <p><span>Shipping</span> <span id="shipping">$15</span></p>
+                <hr>
+                <p><span>Total</span> <span id="total">$15</span></p>
+                <a href="" id="checkout-btn" class="btn">Proceed to Payment</a>
+            </div>
+        </div>
+    </main>
     <!--footer-->
     <footer class="page-footer">
         <div class="footer-textp">
@@ -53,23 +69,26 @@
     </footer>
 
     <script>
-        const getElement = (selector) => {
-            const element = document.querySelector(selector);
-            if (element) return element;
-            throw Error(
-                `Please double check your class names, there is no ${selector} class`
-            );
-        };
-        const linkss = getElement(".links");
-        const navBtnDOM = getElement(".nav-btn");
+        function renderCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const container = document.getElementById('cart-items');
+            container.innerHTML = '';
+            let total = 0;
 
-        navBtnDOM.addEventListener("click", () => {
-            linkss.classList.toggle("show-link");
-        });
+            cart.forEach(product => {
+                const item = document.createElement('div');
+                item.className = 'cart-item';
+                item.innerHTML = `
+                <p>${product.name} - $${product.price} x ${product.quantity}</p>
+            `;
+                total += product.price * product.quantity;
+                container.appendChild(item);
+            });
 
-        const date = getElement("#date");
-        const currentYear = new Date().getFullYear();
-        date.textContent = currentYear;
+            document.getElementById('total').textContent = `Total: $${total.toFixed(2)}`;
+        }
+
+        renderCart();
     </script>
 </body>
 

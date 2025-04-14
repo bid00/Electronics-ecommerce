@@ -1142,3 +1142,112 @@ img {
         height: 300px; /* Adjust height for small screens */
     }
 }
+
+/* === Cart Section === */
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.shop {
+    flex: 0.7;
+    padding: 20px;
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: var(--shadow-2);
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--grey-300);
+    padding-bottom: 10px;
+}
+
+.cart-item-info {
+    display: flex;
+    gap: 10px;
+}
+
+.item-name {
+    font-weight: bold;
+}
+
+.item-price {
+    color: var(--primary-600);
+}
+
+.cart-item-quantity {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.cart-item-quantity button {
+    background-color: var(--primary-600);
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.cart-item-quantity button:hover {
+    background-color: var(--primary-400);
+}
+
+.cart-item-quantity .item-quantity {
+    font-size: 18px;
+}
+
+.btn-remove {
+    background-color: var(--primary-700);
+    color: var(--white);
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-remove:hover {
+    background-color: var(--primary-500);
+}
+
+/* === Right Sidebar === */
+.right-bar {
+    flex: 0.3;
+    padding: 20px;
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: var(--shadow-2);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.right-bar p {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    color: var(--grey-600);
+}
+
+.right-bar hr {
+    border: 0;
+    border-top: 1px solid var(--grey-300);
+}
+
+.right-bar .btn {
+    background-color: var(--primary-600);
+    color: var(--white);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    font-size: 18px;
+}
+
+.right-bar .btn:hover {
+    background-color: var(--primary-400);
+}

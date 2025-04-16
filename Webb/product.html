@@ -116,31 +116,6 @@
             </div>
         </div>
     </footer>
-    <script>
-        function addToCart() {
-    const product = {
-        id: 1,
-        name: "Kit ARM Panda Board",
-        price: 50,
-        quantity: 1
-    };
-
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const existing = cart.find(item => item.id === product.id);
-
-    if (existing) {
-        existing.quantity += 1;
-    } else {
-        cart.push(product);
-    }
-
-    localStorage.setItem('cart', JSON.stringify(cart));
-    // Optional: Redirect after adding
-    window.location.href = "cart.html";
-}
-
-    </script>
-
 </body>
 
 </html>

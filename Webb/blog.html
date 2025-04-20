@@ -30,7 +30,87 @@
         </nav>
     </header>
 
-    <img src="/Webb/Img/dolls-computer-motherboard.jpg" alt="Remove it">
+    <main class="page">
+        <div class="blog-img">
+            <div class="blogpage-title">
+                <h1>Blog</h1>
+                <p>Stay updated with the latest news and trends in electronics.</p>
+            </div>
+        </div>
+        <div class="blog-grid">
+
+            <a href="https://www.eetimes.com/the-shift-from-2d-to-3d-nor-flash/" target="_blank" class="ablog-card">
+                <div class="blog-card">
+                    <div class="thumbnail">
+                        <img src="/Webb/Img/motherboard-backgroundblog.jpg" alt="Board">
+                    </div>
+                    <div class="content">
+                        <div class="author">HNU Electronics, Eng. Omar Mohammed</div>
+                        <h3>The Shift from 2D to 3D NOR Flash</h3>
+                        <p>A look at how 3D NOR Flash memory overcomes the scalability issues inherent in 2D NOR.</p>
+                        <div class="date">Apr 16, 2025</div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.eetimes.com/considerations-for-designing-industrial-robotics-and-controllers/" target="_blank" class="ablog-card">
+                <div class="blog-card">
+                    <div class="thumbnail">
+                        <img src="/Webb/Img/automated-robotic-systems-enhance-manufacturing-smart-warehouses.jpg" alt="robot">
+                    </div>
+                    <div class="content">
+                        <div class="author">HNU Electronics, Eng. Abhishek Jadhav</div>
+                        <h3>Considerations for Designing Industrial Robotics and Controllers</h3>
+                        <p>Explore how integrating and simplifying industrial robotics can boost efficiency and sustainability.</p>
+                        <div class="date">Mar 26, 2025</div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.eetimes.com/where-is-ai-being-used-to-improve-amrs/" target="_blank" class="ablog-card">
+                <div class="blog-card">
+                    <div class="thumbnail">
+                        <img src="/Webb/Img/ai-technology-microchip-background-digital-transformation-concept.jpg" alt="robot">
+                    </div>
+                    <div class="content">
+                        <div class="author">HNU Electronics, Eng. Liam Critchley</div>
+                        <h3>Where is AI Being Used to Improve AMRs?</h3>
+                        <p>AI is revolutionizing AMRs in sensing and navigation.</p>
+                        <div class="date">Mar 24, 2025</div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.eetimes.com/the-evolution-of-optical-computing-part-1/" target="_blank" class="ablog-card">
+                <div class="blog-card">
+                    <div class="thumbnail">
+                        <img src="/Webb/Img/circuit-board-close-up-with-different-components.jpg" alt="optic">
+                    </div>
+                    <div class="content">
+                        <div class="author">HNU Electronics, Eng. Chene Tradonsky</div>
+                        <h3>The Evolution of Optical Computing: Part 1</h3>
+                        <p>Optical computing is poised to transcend traditional computing as Moore's Law slows.</p>
+                        <div class="date">Apr 1, 2025</div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.eetimes.com/the-evolution-of-optical-computing-part-2/" target="_blank" class="ablog-card">
+                <div class="blog-card">
+                    <div class="thumbnail">
+                        <img src="/Webb/Img/smart-microchip-background-motherboard-closeup-technology.jpg" alt="optic">
+                    </div>
+                    <div class="content">
+                        <div class="author">HNU Electronics, Eng. Chene Tradonsky</div>
+                        <h3>The Evolution of Optical Computing: Part 2</h3>
+                        <p>Explore optical computing's transformative potential and current challenges in revolutionizing data processing with light.</p>
+                        <div class="date">Apr 2, 2025</div>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </main>
     <!--footer-->
     <footer class="page-footer">
         <div class="footer-textp">
@@ -52,25 +132,6 @@
         </div>
     </footer>
 
-    <script>
-        const getElement = (selector) => {
-            const element = document.querySelector(selector);
-            if (element) return element;
-            throw Error(
-                `Please double check your class names, there is no ${selector} class`
-            );
-        };
-        const linkss = getElement(".links");
-        const navBtnDOM = getElement(".nav-btn");
-
-        navBtnDOM.addEventListener("click", () => {
-            linkss.classList.toggle("show-link");
-        });
-
-        const date = getElement("#date");
-        const currentYear = new Date().getFullYear();
-        date.textContent = currentYear;
-    </script>
 </body>
 
 </html>

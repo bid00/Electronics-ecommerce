@@ -30,7 +30,38 @@
         </nav>
     </header>
 
-    <img src="/Webb/Img/dolls-computer-motherboard.jpg" alt="Remove it">
+    <main class="page">
+        <div class="wrapper">
+            <div class="shop" id="cart-items">
+                <div class="cart-item">
+                    <img src="/Webb/Img/4.jpg" alt="ARM (Panda) kit">
+                    <div class="item-details">
+                        <h3>Kit ARM (Panda) Development & Training System Based on STM32F103C8T6</h3>
+                        <p>1,750.00 EGP</p>
+                        <input type="number" value="1" min="1" class="qty-input">
+                        <button class="remove-btn">Remove</button>
+                    </div>
+                </div>
+            </div>
+            <div class="right-bar">
+                <p><span>Subtotal</span> <span id="subtotal">EGP 0</span></p>
+                <hr>
+                <p><span>Tax (5%)</span> <span id="tax">EGP 0</span></p>
+                <hr>
+                <p><span>Shipping</span> <span id="shipping">EGP 15</span></p>
+                <hr>
+                <label for="voucher">Have a voucher or gift card?</label>
+                <div class="voucher-box">
+                    <input type="text" id="voucher" placeholder="Enter code here" />
+                    <button class="apply-btn">Apply</button>
+                </div>
+
+                <hr>
+                <p><span>Total</span> <span id="total"> EGP 15</span></p>
+                <a href="" id="checkout-btn" class="btn">Proceed to Payment</a>
+            </div>
+        </div>
+    </main>
     <!--footer-->
     <footer class="page-footer">
         <div class="footer-textp">
@@ -51,26 +82,6 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        const getElement = (selector) => {
-            const element = document.querySelector(selector);
-            if (element) return element;
-            throw Error(
-                `Please double check your class names, there is no ${selector} class`
-            );
-        };
-        const linkss = getElement(".links");
-        const navBtnDOM = getElement(".nav-btn");
-
-        navBtnDOM.addEventListener("click", () => {
-            linkss.classList.toggle("show-link");
-        });
-
-        const date = getElement("#date");
-        const currentYear = new Date().getFullYear();
-        date.textContent = currentYear;
-    </script>
 </body>
 
 </html>

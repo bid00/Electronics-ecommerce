@@ -6,6 +6,7 @@ import connectDB from "./config/dbconnect.js";
 import productRoutes from "./routes/productRoutes.js"
 import userRoutes from "./routes/userRoutes.js"
 import autho from "./middlewares/authoMiddleware.js";
+import corsMiddleware from "./middlewares/corsMiddleware.js";
 
 const app = express();
 config();
@@ -13,7 +14,10 @@ config();
 const PORT = process.env.PORT || 8080;
 
 
+//@desc server uploads
+app.use("/uploads", express.static("uploads"));
 app.use(express.json());
+corsMiddleware(app);
 
 connectDB();
 app.use(logger);

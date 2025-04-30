@@ -1,8 +1,11 @@
 import User from '../models/userModel.js'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
-const accessTokenSecret = process.env.SECRET || "mmhhgg";
+import { configDotenv } from 'dotenv';
+configDotenv();
 
+const accessTokenSecret = process.env.SECRET ;
+console.log(accessTokenSecret);
 
 
 
@@ -11,7 +14,6 @@ const accessTokenSecret = process.env.SECRET || "mmhhgg";
 const register = async (req,res)=>{
     try {
         const {Name, uName, phone , email, password }=req.body;
-        console.log(req.body)
 
         if (!Name ||!uName|| !email ||!password ||!phone) {
             return res.status(422).json({message: "please fill in all fields"});

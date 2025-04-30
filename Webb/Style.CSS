@@ -2129,5 +2129,190 @@ header {
     .blog-card p {
         font-size: 0.9rem;
     }
->>>>>>> 140b46c25ebd477083bbb80e74133c68e2e01616
+}
+
+/*add product*/
+
+.addform-container {
+    max-width: 420px;
+    margin: auto;
+    background: var(--grey-300);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.addform-container input,
+textarea {
+    display: block;
+    width: 95%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: var(--white);
+    font-size: 1rem;
+}
+
+.addproduct-list {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.addproduct-card {
+    background: var(--white);
+    border-radius: 15px;
+    padding: 15px;
+    width: 250px;
+    box-shadow: var(--shadow-2);
+}
+
+.addproduct-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.addproduct-card h3 {
+    margin: 10px 0 5px;
+}
+
+button.update {
+    background: limegreen;
+    margin-top: 10px;
+}
+
+button.delete {
+    background: crimson;
+    margin-top: 5px;
+}
+
+textarea {
+    resize: none;
+}
+
+.addform-container button {
+    color: var(--white);
+    background: var(--primary-600);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.addform-container button:hover {
+    background: var(--primary-300);
+    transform: scale(1.05);
+}
+
+/*profile*/
+
+.account-container {
+    display: flex;
+    max-width: var(--max-width);
+    margin: 50px auto;
+    margin-bottom: 125px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.account-sidebar {
+    width: 260px;
+}
+
+.account-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.account-menu-item {
+    padding: 18px 25px;
+    font-size: 16px;
+    color: var(--grey-500);
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.account-menu-item:hover,
+.account-menu-item.active {
+    background-color: #f7e6ff;
+    color: var(--primary-500);
+    font-weight: bold;
+}
+
+.account-main {
+    flex-grow: 1;
+    padding: 40px 30px;
+}
+
+.account-title {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: var(--grey-500);
+}
+
+.account-alert {
+    background-color: var(--primary-700);
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: var(--white);
+}
+
+.account-greeting {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.account-links {
+    font-size: 16px;
+    color: var(--grey-500);
+}
+
+.account-links a {
+    color: #0073aa;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.account-links a:hover {
+    text-decoration: underline;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.btn-save {
+    padding: 10px 20px;
+    background-color: #2d89ef;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-save:hover {
+    background-color: #1b5dbf;
 }

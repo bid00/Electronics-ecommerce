@@ -3,10 +3,10 @@ import path from "path";
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/"); // Store images in the "uploads" folder
+    cb(null, "uploads/"); 
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname)); // Unique filename
+    cb(null, Date.now() + path.extname(file.originalname)); 
   },
 });
 
@@ -20,7 +20,7 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-// Upload middleware
+
 const upload = multer({ storage, fileFilter });
 
 export default upload;

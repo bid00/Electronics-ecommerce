@@ -9,7 +9,7 @@ const getProfile = async(req,res)=>{
         const user = await User.findOne({ _id: userid});
         return res.status(200).json({
             id:user._id,
-            name:user.Name,
+            name:user.name,
             uName:user.uName,
             email:user.email,
             phone:user.phone,
@@ -36,7 +36,7 @@ const updateProfile = async(req,res)=>{
         }
         await User.findByIdAndUpdate(userId,{
             $set:{
-                Name:req.body.Name,
+                name:req.body.name,
                 uName:req.body.uName,
                 email:req.body.email,
                 phone:req.body.phone,

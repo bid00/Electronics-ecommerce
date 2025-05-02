@@ -6,8 +6,8 @@ const SECRET = process.env.SECRET;
 
 //@desc authorize user token 
 const autho = async(req,res,next)=>{
-    const accessToken = req.headers.authorization
-
+    const accessHeader = req.headers.authorization
+    const accessToken = accessHeader && accessHeader.split(' ')[1];
     if (!accessToken) {
         return res.status(401).json({message: "Access token not found"});
     }
@@ -16,7 +16,7 @@ const autho = async(req,res,next)=>{
         req.user = {id: decodedAccessToken.userId};
         next();
     } catch (error) {
-        return res.status(401).json({message:"Access token is invalid or expired"});
+        return res.status(403).json({message:"Access token is invalid or expired"});
 
         
     }

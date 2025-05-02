@@ -1,7 +1,8 @@
 import Product from "../models/productsModel.js";
+import mongoose from "mongoose";
 
 //@desc Create product with image upload
-//@route /api/products/add
+//@route POST /api/products/add
 
 const createProduct = async (req, res) => {
   try {
@@ -46,14 +47,17 @@ const getProducts = async (req, res) => {
 //@route GET /api/products/:id
 const getProduct = async (req,res)=>{
   try {
-    const id = parseInt(req.params.id);
-    const product = await Product.find({_id:id});
-    if (!product) {
-      res.json({message:"no product found"})
+    const id = req.params.id;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ message: "Invalid product ID" });
     }
-    res.json(product)
+    const product = await Product.findById(id);
+    if (!product) {
+     return res.status(404).json({message:"product not found"})
+    }
+    return res.status(200).json(product)
   } catch (error) {
-    res.json({message:"Error",error})
+    return res.status(500).json({ message: "Server error", error: error.message });
   }
 
 }

@@ -4,7 +4,7 @@ import Cart from "../models/cartModel.js";
 
 //@desc place new order
 //@route /api/orders/checkout
-export const placeOrder = async (req, res) => {
+const placeOrder = async (req, res) => {
   const { email, phone, paymentMethod ,totalAmount} = req.body;
   const user = req.user.id;
   console.log(totalAmount);
@@ -48,7 +48,7 @@ export const placeOrder = async (req, res) => {
 };
 
 // Get user orders
-export const getUserOrders = async (req, res) => {
+const getUserOrders = async (req, res) => {
   try {
     const user = req.user.id;
     const orders = await Order.find({ userId:user });
@@ -61,3 +61,5 @@ export const getUserOrders = async (req, res) => {
     res.status(500).json({ message: "Error fetching orders", error });
   }
 };
+
+export {getUserOrders,placeOrder}

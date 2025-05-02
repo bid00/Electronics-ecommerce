@@ -1,7 +1,8 @@
 import Cart from "../models/cartModel.js";
 import mongoose from "mongoose";
 
-
+//@desc add new product to cart
+//@route /api/cart/add
 const addToCart = async (req, res) => {
   const {productId, quantity } = req.body;
   const user = req.user.id
@@ -27,6 +28,9 @@ const addToCart = async (req, res) => {
   }
 };
 
+
+//@desc get the products in cart
+//@route /api/cart/
 const getCart = async (req, res) => {
   const user = req.user.id;
   try {
@@ -47,6 +51,10 @@ const getCart = async (req, res) => {
     res.status(500).json({ message: "Error fetching cart", error });
   }
 };
+
+
+//@desc remove product from cart
+//@route /api/cart/remove
 const removeFromCart = async (req, res) => {
   const { productId } = req.body;
   const user = req.user.id;
@@ -75,6 +83,8 @@ const removeFromCart = async (req, res) => {
 };
 
 
+//@desc update product quantity in cart
+//@route /api/cart/update-quantity
 const updateQuantity = async (req, res) => {
   const {productId, quantity } = req.body;
   const user = req.user.id;

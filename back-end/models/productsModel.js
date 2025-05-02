@@ -1,6 +1,4 @@
 import { Schema, model } from "mongoose";
-import { type } from "os";
-import { features } from "process";
 
 const ProductSchema = new Schema({
   name: {

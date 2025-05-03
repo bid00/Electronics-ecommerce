@@ -2314,3 +2314,135 @@ textarea {
 .btn-save:hover {
     background-color: #1b5dbf;
 }
+
+/*pay*/
+.paypal-button {
+    margin: 10px 0;
+}
+
+#paypal-button-container {
+    width: 100%;
+    max-width: 500px;
+    margin-top: 20px;
+}
+.pay-cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+/* === Order Confirmation === */
+.sform-section {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.shipping-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.shipping-form input,
+.shipping-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-row>div {
+    flex: 1;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.discard {
+    background: white;
+    color: var(--grey-700);
+    border: 1px solid #000;
+}
+
+.save {
+    background-color: var(--primary-600);
+    color: white;
+}
+
+select,
+option {
+    font-family: 'Noto Color Emoji', sans-serif;
+    font-size: 16px;
+}
+
+.breadcrumb-container {
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.breadcrumb-custom {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.breadcrumb-custom li {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    background-color: var(--grey-200);
+    color: var(--grey-400);
+    padding: 12px 0;
+    font-weight: bold;
+    border-right: 1px solid #444;
+}
+
+.breadcrumb-custom li:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.breadcrumb-custom li:last-child {
+    border-right: none;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.breadcrumb-custom li.active {
+    background-color: var(--primary-600);
+    color: var(--white);
+}
+
+.breadcrumb-custom li i {
+    margin-right: 6px;
+}
+
+.breadcrumb-custom .breadcrumb-item + .breadcrumb-item::before {
+    content: none;
+}

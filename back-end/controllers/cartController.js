@@ -11,9 +11,8 @@ const addToCart = async (req, res) => {
     if (!cart) {
       cart = new Cart({ userId:user, items: [] });
     }
-
     const existingItemIndex = cart.items.findIndex((item) => item.productId == productId);
-
+    
     if (existingItemIndex > -1) {
       cart.items[existingItemIndex].quantity += Number(quantity);
     } else {
@@ -21,6 +20,19 @@ const addToCart = async (req, res) => {
     }
 
     await cart.save();
+
+    await cart.populate("items.productId");
+    let total=0;
+    cart.items.forEach(item => {
+      const product = item.productId;
+      if (product && product.price) {
+        total += product.price * item.quantity;
+      }
+    });
+    cart.total = total;
+    await cart.save();
+
+
     res.status(200).json({ message: "Cart Updated successfully", cart });
   } catch (error) {
     console.error(error);

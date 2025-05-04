@@ -4,14 +4,17 @@ const orderSchema = new Schema({
   orderNumber:{type:Number},
   userId: { type: mongoose.Schema.Types.ObjectId,ref:"User", required: true },
   email: { type: String, required: true },
-  shippingAddress: { type: String, required: true },
-  phone: { type: String, required: true },
-  items: [
+  shippingAddress: [
     {
-      productId: { type: String, required: true },
-      quantity: { type: Number, required: true },
-    },
+      streetNum:{type:String,required:true},
+      apartment:{type:String,required:true},
+      city:{type:String,required:true},
+      zipCode:{type:String,required:true},
+      country:{type:String,required:true}
+    }
   ],
+  phone: { type: String, required: true },
+  cartId:{type: mongoose.Schema.Types.ObjectId,ref:"Cart",required:true},
   totalAmount: { type: Number, required: true },
   paymentMethod: { type: String, required: true },
   status: { type: String, default: "Pending" },

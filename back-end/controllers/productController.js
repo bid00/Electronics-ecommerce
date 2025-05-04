@@ -7,7 +7,7 @@ import mongoose from "mongoose";
 const createProduct = async (req, res) => {
   try {
     const { name, price } = req.body;
-    const picture = req.file ? `/uploads/${req.file.filename}` : null;
+    const picture = req.file ? `/uploads/products/${req.file.filename}` : null;
 
     if (!name || !price || !picture) {
       return res.status(400).json({ message: "All fields are required" });

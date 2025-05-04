@@ -27,7 +27,7 @@ const getProfile = async(req,res)=>{
 const updateProfile = async(req,res)=>{
     try {
         const userId = req.user.id;
-        const picture = req.file ? `/uploads/${req.file.filename}` : req.user.picture;
+        const picture = req.file ? `/uploads/user/${req.file.filename}` : req.user.picture;
         if (req.body.email) {
             const existingUser = await User.findOne({email:req.body.email});
             if (existingUser && existingUser._id.toString() !== userId) {

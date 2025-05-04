@@ -8,6 +8,7 @@ const CartSchema = new mongoose.Schema({
       quantity: { type: Number, required: true },
     },
   ],
+  total: { type: Number, default: 0 }, 
 });
 
 const Cart = mongoose.model("Cart", CartSchema);

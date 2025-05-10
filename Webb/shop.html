@@ -19,11 +19,21 @@
         <nav class="navbar">
             <div class="navbar-links">
                 <a href="index.HTML">Home</a>
-                <a href="shop.html">Shop</a>
+                <a href="shop.html" id="active">Shop</a>
                 <a href="about.html">About Us</a>
-                <a href="blog.html">Blog</a>
                 <a href="contact.html" id="shape">Contact Us</a>
             </div>
+
+            <!-- Fixed Search Bar -->
+            <div class="navbar-search">
+                <form onsubmit="return performSearch()">
+                    <input type="text" id="search" placeholder="Search for products..." />
+                    <button type="submit" id="search-button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+
             <div class="navbar-icon">
                 <a href="login.html" title="Login"><i class="fa fa-user"></i></a>
                 <a href="cart.html" title="Cart"><i class="fa fa-shopping-cart"></i></a>
@@ -33,30 +43,27 @@
     <main class="page">
         <!-- Sidebar -->
         <aside class="sidebar">
-            <aside class="sidebar">
-                <div class="sidebar-content">
-                    <div class="category-area">
-                        <h3>Categories</h3>
-                        <ul class="category-list">
-                            <li onclick="filterProducts('all')">All Products</li>
-                            <li onclick="filterProducts('boards')">Boards</li>
-                            <li onclick="filterProducts('sensors')">Sensors</li>
-                            <li onclick="filterProducts('tools')">Tools</li>
-                            <li onclick="filterProducts('ic')">IC</li>
-                            <li onclick="filterProducts('resistance')">Resistance</li>
-                        </ul>
-                    </div>
-                    <div class="side-image">
-                        <div class="image-container">
-                            <div class="overlay-text">
-                                <h2>HNU <span>Elec</span>tronics</h2>
-                                <p>We provide the best electronics products for you.</p>
-                            </div>
+            <div class="sidebar-content">
+                <div class="category-area">
+                    <h3>Categories</h3>
+                    <ul class="category-list">
+                        <li onclick="filterProducts('all')">All Products</li>
+                        <li onclick="filterProducts('boards')">Boards</li>
+                        <li onclick="filterProducts('sensors')">Sensors</li>
+                        <li onclick="filterProducts('tools')">Tools</li>
+                        <li onclick="filterProducts('ic')">IC</li>
+                        <li onclick="filterProducts('resistance')">Resistance</li>
+                    </ul>
+                </div>
+                <div class="side-image">
+                    <div class="image-container">
+                        <div class="overlay-text">
+                            <h2>HNU <span>Elec</span>tronics</h2>
+                            <p>We provide the best electronics products for you.</p>
                         </div>
                     </div>
                 </div>
-            </aside>
-
+            </div>
         </aside>
 
         <!-- Products Area -->
@@ -89,6 +96,7 @@
     </footer>
 
     <script>
+        // Product data
         const allProducts = [
             { name: 'PIC Development Kit & Training (Betamini)', category: 'boards', price: 1500, img: '/Webb/Img/1.jpg' },
             { name: 'Raspberry Pi Pico Development Kit (RP2040)', category: 'boards', price: 1800, img: '/Webb/Img/2.jpg' },
@@ -129,26 +137,68 @@
             { name: 'Carbon Resistance 1/4W (Price per 4 Resistors)', category: 'resistance', price: 2, img: '/Webb/Img/r1.jpg' },
         ];
 
+        // Store product data in localStorage for consistency across pages
+        localStorage.setItem('products', JSON.stringify(allProducts));
+
+        // Filter products by category
         function filterProducts(category) {
             const grid = document.getElementById('products-grid');
             grid.innerHTML = '';
-            const filtered = category === 'all' ? allProducts : allProducts.filter(p => p.category === category);
-            filtered.forEach(product => {
+            
+            // Check if we have a search term from either local storage or from a current search
+            const searchTerm = localStorage.getItem('searchTerm')?.toLowerCase() || '';
+            let filtered = category === 'all' ? allProducts : allProducts.filter(p => p.category === category);
+            
+            // Apply search filter if exists
+            if (searchTerm) {
+                filtered = filtered.filter(p => p.name.toLowerCase().includes(searchTerm));
+                // Clear search term after use
+                localStorage.removeItem('searchTerm');
+            }
+            
+            // Display filtered products
+            displayProducts(filtered);
+        }
+
+        // Search function
+        function performSearch() {
+            const searchTerm = document.getElementById('search').value.toLowerCase().trim();
+            if (searchTerm) {
+                const filtered = allProducts.filter(p => p.name.toLowerCase().includes(searchTerm));
+                displayProducts(filtered);
+            } else {
+                // If search is empty, show all products
+                displayProducts(allProducts);
+            }
+            return false; // Prevent form submission
+        }
+
+        // Display products in the grid
+        function displayProducts(products) {
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = '';
+            
+            if (products.length === 0) {
+                grid.innerHTML = '<div class="no-results">No products found matching your search.</div>';
+                return;
+            }
+            
+            products.forEach(product => {
                 const productHTML = `
-        <div class="product-card">
-            <a href="product.html?name=${encodeURIComponent(product.name)}&price=${product.price}&img=${encodeURIComponent(product.img)}">
-                <img src="${product.img}" alt="${product.name}">
-                <h3>${product.name}</h3>
-                <p class="price">EGP ${product.price.toFixed(2)}</p>
-            </a>
-            <button class="add-to-cart" onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
-        </div>
-        `;
+                <div class="product-card">
+                    <a href="product.html?name=${encodeURIComponent(product.name)}&price=${product.price}&img=${encodeURIComponent(product.img)}">
+                        <img src="${product.img}" alt="${product.name}">
+                        <h3>${product.name}</h3>
+                        <p class="price">EGP ${product.price.toFixed(2)}</p>
+                    </a>
+                    <button class="add-to-cart" onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
+                </div>
+                `;
                 grid.innerHTML += productHTML;
             });
         }
 
-
+        // Add product to cart
         function addToCart(name, price) {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             cart.push({ name, price, quantity: 1 });
@@ -156,10 +206,19 @@
             alert(`${name} added to cart.`);
         }
 
-        // load all on first visit
-        window.onload = () => filterProducts('all');
+        // Initialize page
+        window.onload = function() {
+            // Check if we have a search term from home page
+            const searchTerm = localStorage.getItem('searchTerm');
+            if (searchTerm) {
+                document.getElementById('search').value = searchTerm;
+                performSearch();
+            } else {
+                // Default: load all products
+                filterProducts('all');
+            }
+        };
     </script>
-
 </body>
 
 </html>

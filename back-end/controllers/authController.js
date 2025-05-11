@@ -9,12 +9,12 @@ const accessTokenSecret = process.env.SECRET ;
 
 
 //@desc register new user and add to database
-//@route POST /api/auth/register
+//@route POST /api/auth/signup
 const register = async (req,res)=>{
     try {
-        const {Name, uName, phone , email, password }=req.body;
-
-        if (!Name ||!uName|| !email ||!password ||!phone) {
+        const {name, uName, phone , email, password }=req.body;
+        console.log(req.body)
+        if (!name ||!uName|| !email ||!password ||!phone) {
             return res.status(422).json({message: "please fill in all fields"});
         }
 
@@ -23,7 +23,7 @@ const register = async (req,res)=>{
            return res.status(400).json({message: "Account with same Email or Username exists"});
         }
         const hashedPassword = await bcrypt.hash(password, 10);
-        user = new User({Name,uName,phone,email,password:hashedPassword});
+        user = new User({name,uName,phone,email,password:hashedPassword});
         await user.save();
         res.status(201).json({message: "User registered Successfully"});
 

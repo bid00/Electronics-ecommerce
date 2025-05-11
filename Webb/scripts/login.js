@@ -1,11 +1,5 @@
-
 document.addEventListener("DOMContentLoaded", function () {
-//    const uName = document.querySelector("#username");
-//    const password = document.querySelector("#password");
-//    const email = document.querySelector("#email");
-//    const name = document.querySelector("#name");
-//    const phone = document.querySelector("#phone");
-      const loginForm = document.querySelector("#login-form")
+    const loginForm = document.querySelector("#login-form")
     async function login(event){
         event.preventDefault();
         const formData = new FormData(loginForm);
@@ -22,7 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log(result  )
             if (response.ok) {
                 localStorage.setItem("accessToken",result.accessToken);
-                window.href = 'index.html' 
+                // showPopover("Login successful! Redirecting...", true);
+                setTimeout(() => window.location.href = "./profile.html", 2000);
             }
         } catch (error) {
             console.error("Login failed",error)

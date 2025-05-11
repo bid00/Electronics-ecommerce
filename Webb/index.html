@@ -77,34 +77,7 @@
         <section class="products-section">
             <h2 class="section-title">Featured Products</h2>
             <div class="product-grid">
-<<<<<<< HEAD
                 <!-- Products fetched from back end will be here -->
-=======
-                <div class="product-card">
-                    <img src="/Webb/Img/ic 1.jpg" alt="IC 74138" />
-                    <h3 class="product-title">IC 74138 - 3 to 8 <br>Decoder</h3>
-                    <p class="product-price">15.00 EGP</p>
-                    <a href="shop.html" class="view-button">View Product</a>
-                </div>
-                <div class="product-card">
-                    <img src="/Webb/Img/ic 1.jpg" alt="IC 74139" />
-                    <h3 class="product-title">IC 74139 - Dual 2 to 4 Decoder</h3>
-                    <p class="product-price">15.00 EGP</p>
-                    <a href="shop.html" class="view-button">View Product</a>
-                </div>
-                <div class="product-card">
-                    <img src="/Webb/Img/ic 1.jpg" alt="IC 74153" />
-                    <h3 class="product-title">IC 74153 - 4 to 1 Multiplexer</h3>
-                    <p class="product-price">25.00 EGP</p>
-                    <a href="shop.html" class="view-button">View Product</a>
-                </div>
-                <div class="product-card">
-                    <img src="/Webb/Img/ic 1.jpg" alt="IC Socket 14 pin" />
-                    <h3 class="product-title">IC Socket 14 <br>pin</h3>
-                    <p class="product-price">1.25 EGP</p>
-                    <a href="shop.html" class="view-button">View Product</a>
-                </div>
->>>>>>> main
             </div>
         </section>
 
@@ -175,89 +148,7 @@
         </div>
     </footer>
 
-<<<<<<< HEAD
     <script src="./scripts/index.js"></script>
-=======
-    <script>
-        window.onload = function() {
-    // Define products if not already in localStorage
-    if (!localStorage.getItem('products')) {
-        // Sample products - you should use the same data structure as in shop.html
-        const products = [
-            { name: 'PIC Development Kit & Training (Betamini)', category: 'boards', price: 1500, img: '/Webb/Img/1.jpg' },
-            { name: 'Raspberry Pi Pico Development Kit (RP2040)', category: 'boards', price: 1800, img: '/Webb/Img/2.jpg' },
-            { name: 'IC 74138 - 3 to 8 Decoder', category: 'ic', price: 15, img: '/Webb/Img/ic 1.jpg' },
-            { name: 'IC 74139 - Dual 2 to 4 Decoder', category: 'ic', price: 15, img: '/Webb/Img/ic 1.jpg' },
-            { name: 'IC 74153 - 4 to 1 Multiplexer', category: 'ic', price: 25, img: '/Webb/Img/ic 1.jpg' },
-            { name: 'IC Socket 14 pin', category: 'ic', price: 1.25, img: '/Webb/Img/ic 1.jpg' },
-            // Add all your products here
-        ];
-        localStorage.setItem('products', JSON.stringify(products));
-    }
-    
-    // Add event listener to search input
-    const searchInput = document.getElementById('search');
-    if (searchInput) {
-        searchInput.addEventListener('input', searchSuggestions);
-    }
-};
-
-// Improved search suggestions function
-function searchSuggestions() {
-    const input = document.getElementById("search").value.toLowerCase();
-    const suggestionsBox = document.getElementById("suggestions");
-    suggestionsBox.innerHTML = "";
-
-    if (input.trim() === "") {
-        suggestionsBox.style.display = "none";
-        return;
-    }
-
-    // Get products from localStorage
-    let products = JSON.parse(localStorage.getItem("products")) || [];
-
-    // Filter products based on search input
-    let matches = products.filter(product => product.name.toLowerCase().includes(input));
-
-    if (matches.length === 0) {
-        suggestionsBox.innerHTML = "<div>No matching products</div>";
-        suggestionsBox.style.display = "block";
-        return;
-    }
-
-    // Create suggestion elements
-    matches.slice(0, 5).forEach(product => { // Limit to 5 suggestions for better UX
-        const suggestion = document.createElement("div");
-        suggestion.textContent = product.name;
-        suggestion.classList.add("suggestion-item"); // Add class for styling
-        suggestion.onclick = () => {
-            document.getElementById("search").value = product.name;
-            suggestionsBox.style.display = "none";
-            
-            // Store search term and redirect to shop page
-            localStorage.setItem("searchTerm", product.name);
-            window.location.href = "shop.html";
-        };
-        suggestionsBox.appendChild(suggestion);
-    });
-
-    suggestionsBox.style.display = "block";
-}
-
-// Handle search form submission
-function handleSearch(event) {
-    event.preventDefault();
-    const searchTerm = document.getElementById("search").value.trim();
-    
-    if (searchTerm) {
-        localStorage.setItem("searchTerm", searchTerm);
-        window.location.href = "shop.html";
-    }
-    
-    return false;
-}
-    </script>
->>>>>>> main
 </body>
 
 </html>

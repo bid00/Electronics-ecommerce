@@ -2,7 +2,7 @@ import User from "../models/userModel.js";
 import bcrypt from "bcryptjs";
 
 //@desc Get current user data
-//@route GET /api/user/getprofile
+//@route GET /api/user/profile
 const getProfile = async(req,res)=>{
     try {
         const userid= req.user.id;
@@ -13,7 +13,6 @@ const getProfile = async(req,res)=>{
             uName:user.uName,
             email:user.email,
             phone:user.phone,
-            picture: `${req.protocol}://${req.get("host")}${user.picture}`,
         })
     } catch (error) {
 

@@ -13,3 +13,14 @@ paypal.Buttons({
         });
     }
 }).render('#paypal-button-container');
+document.querySelector('.btn-confirm').addEventListener('click', function () {
+    alert("Your order has been confirmed!");
+});
+document.querySelector('.btn-confirm').addEventListener('click', function () {
+    // افتراض وجود خطأ
+    const isError = true;
+
+    if (isError) {
+        window.location.href = "error.html";
+    }
+});

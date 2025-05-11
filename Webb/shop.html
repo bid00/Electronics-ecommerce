@@ -19,11 +19,21 @@
         <nav class="navbar">
             <div class="navbar-links">
                 <a href="index.HTML">Home</a>
-                <a href="shop.html">Shop</a>
+                <a href="shop.html" id="active">Shop</a>
                 <a href="about.html">About Us</a>
-                <a href="blog.html">Blog</a>
                 <a href="contact.html" id="shape">Contact Us</a>
             </div>
+
+            <!-- Fixed Search Bar -->
+            <div class="navbar-search">
+                <form onsubmit="return performSearch()">
+                    <input type="text" id="search" placeholder="Search for products..." />
+                    <button type="submit" id="search-button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+
             <div class="navbar-icon">
                 <a href="login.html" title="Login"><i class="fa fa-user"></i></a>
                 <a href="cart.html" title="Cart"><i class="fa fa-shopping-cart"></i></a>
@@ -88,10 +98,21 @@
         </div>
     </footer>
     <script src="./scripts/product.js"></script>
-    <script>
+   <script>
+        // Search function
+        function performSearch() {
+            const searchTerm = document.getElementById('search').value.toLowerCase().trim();
+            if (searchTerm) {
+                const filtered = allProducts.filter(p => p.name.toLowerCase().includes(searchTerm));
+                displayProducts(filtered);
+            } else {
+                // If search is empty, show all products
+                displayProducts(allProducts);
+            }
+            return false; // Prevent form submission
+        }
         document.addEventListener("DOMContentLoaded", () => {fetchingProducts();});
     </script>
-
 </body>
 
 </html>

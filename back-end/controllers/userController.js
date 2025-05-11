@@ -26,7 +26,7 @@ const getProfile = async(req,res)=>{
 const updateProfile = async(req,res)=>{
     try {
         const userId = req.user.id;
-        const picture = req.file ? `/uploads/user/${req.file.filename}` : req.user.picture;
+        console.log(req.body);
         if (req.body.email) {
             const existingUser = await User.findOne({email:req.body.email});
             if (existingUser && existingUser._id.toString() !== userId) {
@@ -38,8 +38,7 @@ const updateProfile = async(req,res)=>{
                 name:req.body.name,
                 uName:req.body.uName,
                 email:req.body.email,
-                phone:req.body.phone,
-                picture              
+                phone:req.body.phone,             
             },
         },{new:true});
         return res.status(200).json({message:"Profile updated successfuly"})

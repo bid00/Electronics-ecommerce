@@ -23,9 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 <img src="${product.picture}" alt="${product.name}" />
                 <h3 class="product-title">${product.name}</h3>
                 <p class="product-price">${Number(product.price).toFixed(2)} EGP</p>
-                <a href="shop.html" class="view-button">View Product</a>
+                <a href="product.html?id=${product.id}" class="view-button">View Product</a>
             `;
-
             productGrid.appendChild(productCard);
         });
     })();
@@ -39,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
              <img src="${product.picture}" alt="${product.name}">
                     <h3 class="kit-title">${product.name}</h3>
                     <p class="kit-price">${Number(product.price).toFixed(2)} EGP</p>
-                    <a href="shop.html" class="view-button">View Product</a>
+                    <a href="product.html?id=${product.id}" class="view-button">View Product</a>
                
             `;
             kitGrid.appendChild(kitCard);

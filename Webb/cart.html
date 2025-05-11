@@ -58,9 +58,9 @@
                 </li>
             </ol>
         </nav>
-        <div class="wrapper">
+        <div class="wrapper" id="cart-container">
             <div class="shop" id="cart-items">
-                <div class="cart-item">
+                <div class="cart-item" id="cart-item">
                     <img src="/Webb/Img/4.jpg" alt="ARM (Panda) kit">
                     <div class="item-details">
                         <h3>Kit ARM (Panda) Development & Training System Based on STM32F103C8T6</h3>
@@ -109,22 +109,7 @@
             </div>
         </div>
     </footer>
-    <script>
-        function calculateAndStoreTotal() {
-            const subtotal = 1750; 
-            const tax = subtotal * 0.05;
-            const shipping = 15;
-            const total = subtotal + tax + shipping;
-    
-            document.getElementById('subtotal').textContent = `EGP ${subtotal.toFixed(2)}`;
-            document.getElementById('tax').textContent = `EGP ${tax.toFixed(2)}`;
-            document.getElementById('total').textContent = `EGP ${(total).toFixed(2)}`;
-    
-            localStorage.setItem("cartTotal", total.toFixed(2));
-        }
-    
-        window.onload = calculateAndStoreTotal;
-    </script>
+    <script src="./scripts/cart.js"></script>
     
 </body>
 

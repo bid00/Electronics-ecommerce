@@ -1,10 +1,24 @@
 import Cart from "../models/cartModel.js";
 import mongoose from "mongoose";
 
+
+ async function calculateTotal(cart) {
+      await cart.populate("items.productId", "name price picture");
+    let total=0;
+    cart.items.forEach(item => {
+      const product = item.productId;
+      if (product && product.price) {
+        total += product.price * item.quantity;
+      }
+    });
+    cart.total = total;
+    await cart.save();
+    }
 //@desc add new product to cart
 //@route /api/cart/add
 const addToCart = async (req, res) => {
   const {productId, quantity } = req.body;
+  console.log(req.body);
   const user = req.user.id
   try {
     let cart = await Cart.findOne({ userId:user });
@@ -20,17 +34,8 @@ const addToCart = async (req, res) => {
     }
 
     await cart.save();
-
-    await cart.populate("items.productId");
-    let total=0;
-    cart.items.forEach(item => {
-      const product = item.productId;
-      if (product && product.price) {
-        total += product.price * item.quantity;
-      }
-    });
-    cart.total = total;
-    await cart.save();
+    await calculateTotal(cart);
+    
 
 
     res.status(200).json({ message: "Cart Updated successfully", cart });
@@ -47,7 +52,7 @@ const getCart = async (req, res) => {
   const user = req.user.id;
   try {
     const cart = await Cart.findOne({ userId:user }).populate("items.productId","name price picture");
-    if (!cart) {
+    if (!cart || cart.items=="") {
       return res.status(404).json({ message: "No items in cart" });
     }
     cart.items = cart.items.map((item) => ({
@@ -79,6 +84,7 @@ const removeFromCart = async (req, res) => {
     }
     cart.items = cart.items.filter(item => item.productId.toString() !== productId);
     await cart.save();
+    await calculateTotal(cart);
     const updatedCart = await Cart.findOne({ userId: user }).populate("items.productId", "name price picture");
     updatedCart.items = updatedCart.items.map((item) => ({
       ...item._doc,
@@ -118,6 +124,7 @@ const updateQuantity = async (req, res) => {
 
     product.quantity = Number(quantity);
     await cart.save();
+    await calculateTotal(cart);
     cart = await Cart.findOne({userId:user}).populate("items.productId","name price picture")
     cart.items = cart.items.map((item) => ({
       ...item._doc,

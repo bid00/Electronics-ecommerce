@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const token = localStorage.getItem("accessToken");
+    token? window.location.href="./profile.html":"";
     const loginForm = document.querySelector("#login-form")
     async function login(event){
         event.preventDefault();

@@ -38,12 +38,12 @@
                     <div class="category-area">
                         <h3>Categories</h3>
                         <ul class="category-list">
-                            <li onclick="filterProducts('all')">All Products</li>
-                            <li onclick="filterProducts('boards')">Boards</li>
-                            <li onclick="filterProducts('sensors')">Sensors</li>
-                            <li onclick="filterProducts('tools')">Tools</li>
-                            <li onclick="filterProducts('ic')">IC</li>
-                            <li onclick="filterProducts('resistance')">Resistance</li>
+                            <li onclick="fetchingProducts()">All Products</li>
+                            <li onclick="fetchingProducts('boards')">Boards</li>
+                            <li onclick="fetchingProducts('sensors')">Sensors</li>
+                            <li onclick="fetchingProducts('tools')">Tools</li>
+                            <li onclick="fetchingProducts('ic')">IC</li>
+                            <li onclick="fetchingProducts('resistance')">Resistance</li>
                         </ul>
                     </div>
                     <div class="side-image">
@@ -87,77 +87,9 @@
             </div>
         </div>
     </footer>
-
+    <script src="./scripts/product.js"></script>
     <script>
-        const allProducts = [
-            { name: 'PIC Development Kit & Training (Betamini)', category: 'boards', price: 1500, img: '/Webb/Img/1.jpg' },
-            { name: 'Raspberry Pi Pico Development Kit (RP2040)', category: 'boards', price: 1800, img: '/Webb/Img/2.jpg' },
-            { name: 'Kit ARM (Panda+) Development & Training System Based on STM32F401RCT6', category: 'boards', price: 1900, img: '/Webb/Img/3.jpg' },
-            { name: 'Kit ARM (Panda) Development & Training System Based on STM32F103C8T6', category: 'boards', price: 1750, img: '/Webb/Img/4.jpg' },
-            { name: 'FPGA EP4CE6 Development Board ALTERA IV', category: 'boards', price: 6000, img: '/Webb/Img/5.jpg' },
-            { name: 'Kit Eta32-BIG Atmel AVR USB Development & Training System - Based on ATMEGA32', category: 'boards', price: 3150, img: '/Webb/Img/6.jpg' },
-            { name: 'Kit Eta32-MINI Atmel AVR USB Development & Training System Ver.2 - Based on ATMEGA32', category: 'boards', price: 1450, img: '/Webb/Img/7.jpg' },
-            { name: 'Kit Arduino UNO Development & Training Complete Learning System', category: 'boards', price: 2650, img: '/Webb/Img/8.jpg' },
-            { name: 'UNO R3 Board', category: 'boards', price: 540, img: '/Webb/Img/a1.jpg' },
-            { name: 'Arduino NANO 33 BLE Rev2', category: 'boards', price: 1400, img: '/Webb/Img/a2.jpg' },
-            { name: 'Arduino Due without Headers - Original', category: 'boards', price: 2000, img: '/Webb/Img/a3.jpg' },
-            { name: 'Arduino MKR GPS Shield', category: 'boards', price: 2250, img: '/Webb/Img/a4.jpg' },
-            { name: 'Arduino Shield Portenta CAT.M1/NB IoT GNSS', category: 'boards', price: 3500, img: '/Webb/Img/a5.jpg' },
-            { name: 'Arduino Uno Rev3 - Original', category: 'boards', price: 1750, img: '/Webb/Img/a6.jpg' },
-            { name: 'Arduino Portenta H7', category: 'boards', price: 2850, img: '/Webb/Img/a7.jpg' },
-            { name: 'Arduino Shield Working Area for NANO Project Board', category: 'boards', price: 250, img: '/Webb/Img/a8.jpg' },
-            { name: 'Ultrasonic Sensor', category: 'sensors', price: 540, img: '/Webb/Img/s1.jpeg' },
-            { name: 'DFRobot Gesture & Touch Recognition Sensor', category: 'sensors', price: 750, img: '/Webb/Img/s2.jpg' },
-            { name: 'DFRobot Accelerometer ADXL345 Sensor (±16g) Triple Axis', category: 'sensors', price: 400, img: '/Webb/Img/s3.jpg' },
-            { name: 'Analog Grayscale Sensor', category: 'sensors', price: 150, img: '/Webb/Img/s4.jpg' },
-            { name: 'URM37 Ultrasonic Distance Sensor (2～800cm, RS232 / UART)', category: 'sensors', price: 950, img: '/Webb/Img/s5.jpg' },
-            { name: 'HUSKYLENS - AI Machine Vision Sensor', category: 'sensors', price: 4500, img: '/Webb/Img/s6.jpg' },
-            { name: 'A3291KUA-T Hall Effect Sensor', category: 'sensors', price: 125, img: '/Webb/Img/s7.jpg' },
-            { name: 'Thin Film Pressure Sensor RP-C7.6-ST - FSR Sensor', category: 'sensors', price: 250, img: '/Webb/Img/s8.jpg' },
-            { name: '2 In 1 Soldering Iron Stand Holder', category: 'tools', price: 180, img: '/Webb/Img/t1.jpg' },
-            { name: '3 In 1 Soldering Iron Stand Holder', category: 'tools', price: 220, img: '/Webb/Img/t2.jpg' },
-            { name: '31 In 1 Screwdriver Set (JL-1162)', category: 'tools', price: 60, img: '/Webb/Img/t3.jpg' },
-            { name: 'Adjustable Temperature Soldering Iron 60W', category: 'tools', price: 220, img: '/Webb/Img/t4.jpg' },
-            { name: 'IC 74138 - 3 to 8 Decoder', category: 'ic', price: 15, img: '/Webb/Img/ic 1.jpg' },
-            { name: 'IC 74139 - Dual 2 to 4 Decoder', category: 'ic', price: 15, img: '/Webb/Img/ic 1.jpg' },
-            { name: 'IC 74153 - 4 to 1 Multiplexer', category: 'ic', price: 25, img: '/Webb/Img/ic 1.jpg' },
-            { name: 'IC Socket 14 pin', category: 'ic', price: 1.25, img: '/Webb/Img/ic 1.jpg' },
-            { name: 'Dual 4-input AND Gate IC ( 7421 )', category: 'ic', price: 8, img: '/Webb/Img/ic2.jpg' },
-            { name: '74LS32 OR gate', category: 'ic', price: 5, img: '/Webb/Img/ic3.jpg' },
-            { name: '7404 IC NOT Gate', category: 'ic', price: 7.5, img: '/Webb/Img/ic4.jpg' },
-            { name: 'IC 4030 - Quad Exclusive OR XOR Gate', category: 'ic', price: 5, img: '/Webb/Img/ic5.jpg' },
-            { name: 'Carbon Resistance 1/4W (Price per 4 Resistors)', category: 'resistance', price: 2, img: '/Webb/Img/r1.jpg' },
-        ];
-
-        function filterProducts(category) {
-            const grid = document.getElementById('products-grid');
-            grid.innerHTML = '';
-            const filtered = category === 'all' ? allProducts : allProducts.filter(p => p.category === category);
-            filtered.forEach(product => {
-                const productHTML = `
-        <div class="product-card">
-            <a href="product.html?name=${encodeURIComponent(product.name)}&price=${product.price}&img=${encodeURIComponent(product.img)}">
-                <img src="${product.img}" alt="${product.name}">
-                <h3>${product.name}</h3>
-                <p class="price">EGP ${product.price.toFixed(2)}</p>
-            </a>
-            <button class="add-to-cart" onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
-        </div>
-        `;
-                grid.innerHTML += productHTML;
-            });
-        }
-
-
-        function addToCart(name, price) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.push({ name, price, quantity: 1 });
-            localStorage.setItem('cart', JSON.stringify(cart));
-            alert(`${name} added to cart.`);
-        }
-
-        // load all on first visit
-        window.onload = () => filterProducts('all');
+        document.addEventListener("DOMContentLoaded", () => {fetchingProducts();});
     </script>
 
 </body>

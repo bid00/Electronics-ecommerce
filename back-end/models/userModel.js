@@ -1,6 +1,5 @@
 import mongoose, { model } from "mongoose";
-import bcrypt from 'bcryptjs';
-import { type } from "os";
+
 
 const userSchema = new mongoose.Schema({
     name:{
@@ -32,7 +31,6 @@ const userSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
-    googleId: { type: String }, 
 });
 
 const User = mongoose.model('Users',userSchema);

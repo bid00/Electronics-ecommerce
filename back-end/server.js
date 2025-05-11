@@ -18,7 +18,6 @@ const PORT = process.env.PORT || 8080;
 app.use(express.json());
 app.use(bodyParser.json());
 
-
 //@desc server uploads
 app.use("/uploads", express.static("uploads"));
 corsMiddleware(app);

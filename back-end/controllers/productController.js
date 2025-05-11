@@ -27,7 +27,9 @@ const createProduct = async (req, res) => {
 //@route GET /api/products
 const getProducts = async (req, res) => {
   try {
-    const products = await Product.find({}, "name price picture");
+    const category = req.query.category;
+
+    const products = await Product.find(category?{category}:{}, "name price picture");
 
     const updatedProducts = products.map(item => ({
       id:item._id,

@@ -9,6 +9,7 @@ import cartRoutes from "./routes/cartRoutes.js"
 import orderRoutes from "./routes/orderRoutes.js"
 import autho from "./middlewares/authoMiddleware.js";
 import corsMiddleware from "./middlewares/corsMiddleware.js";
+import mailRoutes from "./routes/mailRoutes.js";
 import bodyParser from "body-parser";
 
 const app = express();
@@ -27,6 +28,7 @@ app.use("/api/auth",authRoutes);
 app.use("/api/user",autho,userRoutes);
 app.use("/api/cart",autho,cartRoutes);
 app.use("/api/order",autho,orderRoutes);
+app.use("/api/mail",mailRoutes);
 
 app.get("/",(req,res)=>{
     res.send("home");

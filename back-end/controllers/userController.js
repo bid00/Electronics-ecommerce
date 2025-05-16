@@ -1,5 +1,6 @@
 import User from "../models/userModel.js";
 import bcrypt from "bcryptjs";
+import Order from "../models/orderModel.js";
 
 //@desc Get current user data
 //@route GET /api/user/profile
@@ -52,6 +53,38 @@ const updateProfile = async(req,res)=>{
 
 }
 
+// GET /api/addresses
+const getUserAddresses = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const orders = await Order.find({ userId }).select("shippingAddress");
+
+    if (!orders.length) {
+      return res.status(404).json({ message: "No addresses found" });
+    }
+
+    // Extract unique addresses
+    const addresses = [];
+    const seen = new Set();
+
+    orders.forEach(order => {
+      order.shippingAddress.forEach(addr => {
+        const hash = JSON.stringify(addr);
+        if (!seen.has(hash)) {
+          seen.add(hash);
+          addresses.push(addr);
+        }
+      });
+    });
+
+    res.status(200).json({ addresses });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Error fetching addresses" });
+  }
+};
+
+
 //@desc Change password for user
 //@route PATCH /api/user/changepassword
 const changePassword = async (req,res)=>{
@@ -85,4 +118,4 @@ const changePassword = async (req,res)=>{
         
     }
 }
-export {getProfile,updateProfile,changePassword};
+export {getProfile,updateProfile,changePassword,getUserAddresses};

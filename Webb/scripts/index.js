@@ -6,16 +6,25 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
             const response = await fetch(`http://localhost:8000/api/products${category ? `?category=${category}` : ""}`);
             const products = await response.json();
+
+            if (!response.ok) {
+                showToast(products.message || "Failed to fetch products", "danger");
+                return [];
+            }
+
             return products;
         } catch (error) {
             console.error("Error fetching products:", error);
+            showToast("Error connecting to server", "danger");
             return [];
         }
     }
 
     (async function () {
         const products = await fetchingProducts("ic");
-        products.slice(0,4).forEach(product => {
+        if (!products.length) return;
+
+        products.slice(0, 4).forEach(product => {
             const productCard = document.createElement("div");
             productCard.classList.add("product-card");
 
@@ -31,18 +40,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     (async function () {
         const products = await fetchingProducts("boards");
-        products.slice(0,8).forEach(product=>{
+        if (!products.length) return;
+
+        products.slice(0, 8).forEach(product => {
             const kitCard = document.createElement("div");
             kitCard.classList.add("kit-card");
-            kitCard.innerHTML=`
-             <img src="${product.picture}" alt="${product.name}">
-                    <h3 class="kit-title">${product.name}</h3>
-                    <p class="kit-price">${Number(product.price).toFixed(2)} EGP</p>
-                    <a href="product.html?id=${product.id}" class="view-button">View Product</a>
-               
+            kitCard.innerHTML = `
+                <img src="${product.picture}" alt="${product.name}">
+                <h3 class="kit-title">${product.name}</h3>
+                <p class="kit-price">${Number(product.price).toFixed(2)} EGP</p>
+                <a href="product.html?id=${product.id}" class="view-button">View Product</a>
             `;
             kitGrid.appendChild(kitCard);
-        })
-        
+        });
     })();
-})
+});

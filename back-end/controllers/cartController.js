@@ -52,8 +52,11 @@ const getCart = async (req, res) => {
   const user = req.user.id;
   try {
     const cart = await Cart.findOne({ userId:user }).populate("items.productId","name price picture");
-    if (!cart || cart.items=="") {
-      return res.status(404).json({ message: "No items in cart" });
+    if (!cart) {
+      return res.status(200).json({ cart: { items: [] } });
+    }
+    if (cart.items.length === 0) {
+      return res.status(200).json({ cart });
     }
     cart.items = cart.items.map((item) => ({
       ...item._doc,
@@ -64,7 +67,6 @@ const getCart = async (req, res) => {
     }));
     res.status(200).json({ cart });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ message: "Error fetching cart", error });
   }
 };

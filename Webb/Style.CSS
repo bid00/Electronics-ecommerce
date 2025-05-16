@@ -1008,8 +1008,7 @@ header {
     color: var(--grey-500);
     font-weight: bold;
     margin-bottom: 15px;
-<<<<<<< HEAD
-=======
+
 }
 
 @media screen and (max-width: 992px) {
@@ -2365,6 +2364,15 @@ textarea {
     margin: 0;
     padding: 0;
 }
+.order-item {
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+.orders-list {
+    margin-top: 20px;
+}   
 
 .account-menu-item {
     padding: 18px 25px;
@@ -2634,6 +2642,7 @@ input[type="radio"] {
 .btn-confirm:hover {
     background-color: #3b35c4;
 }
+ 
 
 @media screen and (max-width: 768px) {
     .addform-container {
@@ -2703,4 +2712,6 @@ input[type="radio"] {
         margin: 20px 10px;
         padding: 15px;
     }
+   
+
 }

@@ -1,7 +1,9 @@
 import { createTransport } from 'nodemailer';
-import { USER, APP_PASSWORD } from '../config.js';
-import { text } from 'express';
+import { config } from "dotenv";
+config()
 
+const USER = process.env.USER;
+const APP_PASSWORD = process.env.APP_PASSWORD;
 // Configure Nodemailer transporter
 const transporter = createTransport({
     service: 'gmail',
@@ -17,7 +19,7 @@ const transporter = createTransport({
 const autoReply = async (email) =>{
     const mailOptions={
         from:{
-            name:'PASIRA AUTO REPLY',
+            name:'HNU Electronics AUTO REPLY',
             address:USER
         },
         to: email,
@@ -45,13 +47,13 @@ export const subscribeUser = async (req, res) => {
 
     const mailOptions = {
         from: {
-            name: 'PASIRA Mail List',
+            name: 'HNU Electronics Mail List',
             address: USER
         },
         to: email, // Send email to user
-        subject: 'Welcome to PASIRA!',
-        text: `Hello, you have been successfully added to PASIRA mail list.`,
-        html: `<p><b>Welcome!</b> You have been successfully subscribed to the PASIRA mailing list.</p>`
+        subject: 'Welcome to HNU Electronics!',
+        text: `Hello, you have been successfully added to HNU Electronics mail list.`,
+        html: `<p><b>Welcome!</b> You have been successfully subscribed to the HNU Electronics mailing list.</p>`
     };
 
     try {
@@ -65,15 +67,15 @@ export const subscribeUser = async (req, res) => {
 };
 
 export const contactForm = async (req, res) => {
-    const { name, email, subject, message } = req.body;
-    if (!name || !email || !subject || !message) {
+    const { name, email, phone, message } = req.body;
+    if (!name || !email || !phone || !message) {
         return res.status(400).json({ error: "All fields are required" });
     }
 
     const mailOptions = {
         from: email,
         to: USER,
-        subject: `Contact Form: ${subject}`,
+        phone: `Contact Form: ${phone}`,
         text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
         html: `<p><strong>Name:</strong> ${name}</p>
                <p><strong>Email:</strong> ${email}</p>
@@ -89,32 +91,3 @@ export const contactForm = async (req, res) => {
         res.status(500).json({ error: "Failed to send email" });
     }
 };
-
-export const callBack = async (req, res) => {
-    const { name, email, phone,subject, message } = req.body;
-
-    if (!name || !email || !subject || !message ||!phone) {
-        return res.status(400).json({ error: "All fields are required" });
-    }
-
-    const mailOptions = {
-        from: email,
-        to: USER,
-        subject: `CallBack Requested: ${subject}`,
-        text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-        html: `<p><strong>Name:</strong> ${name}</p>
-               <p><strong>Email:</strong> ${email}</p>
-               <p><strong>Email:</strong> ${phone}</p>
-               <p><strong>Message:</strong> ${message}</p>`
-    };
-
-    try {
-        await transporter.sendMail(mailOptions);
-        res.status(200).json({ message: "Message sent successfully!" });
-        await autoReply(email);
-    } catch (error) {
-        console.error("Email sending failed:", error);
-        res.status(500).json({ error: "Failed to send email" });
-    }
-};
-

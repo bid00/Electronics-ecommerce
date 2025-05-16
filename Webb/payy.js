@@ -14,13 +14,12 @@ paypal.Buttons({
     }
 }).render('#paypal-button-container');
 document.querySelector('.btn-confirm').addEventListener('click', function () {
-    alert("Your order has been confirmed!");
+    showToast("Order has been Confirmed")
 });
 document.querySelector('.btn-confirm').addEventListener('click', function () {
-    // افتراض وجود خطأ
     const isError = true;
 
     if (isError) {
-        window.location.href = "error.html";
+        window.location.href = "./orderconfirm.html";
     }
 });

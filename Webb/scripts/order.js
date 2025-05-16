@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
     }
 
-    // جلب بيانات المستخدم
     try {
         const response = await fetch("http://localhost:8000/api/user/profile", {
             method: "GET",
@@ -42,11 +41,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (res.ok) {
             addressData = await res.json();
             lastAddress = addressData.addresses?.[addressData.addresses.length - 1];
-            document.getElementById("street").value = lastAddress.streetNum || "";
-            document.getElementById("apartment").value = lastAddress.apartment || "";
-            document.getElementById("city").value = lastAddress.city || "";
-            document.getElementById("zip").value = lastAddress.zipCode || "";
-            document.getElementById("country").value = lastAddress.country || "";
+            var street= document.getElementById("street").value = lastAddress.streetNum || "";
+            var apartment =document.getElementById("apartment").value = lastAddress.apartment || "";
+            var city = document.getElementById("city").value = lastAddress.city || "";
+            var zip = document.getElementById("zip").value = lastAddress.zipCode || "";
+            var country = document.getElementById("country").value = lastAddress.country || "";
         } else {
             showToast("No saved address found", "warning");
         }

@@ -31,9 +31,11 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!data.cart || data.cart.items.length === 0) {
                 document.getElementById("cart-items").innerHTML = "<p class='text-center text-gray-500 text-lg'>Your cart is empty.</p>";
                 showToast("cart is empty", "yellow");
+                var checkoutBtn = document.getElementById("checkout-btn");
+                checkoutBtn.disabled = true;
                 return;
             }
-
+            
             renderCart(data.cart);
         } catch (error) {
             console.error("Error fetching cart:", error);

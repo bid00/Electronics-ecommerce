@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function logout() {
     localStorage.removeItem("accessToken");
-    window.location.href = "./login.html"; // غير المسار حسب نظامك
+    window.location.href = "./login.html"; 
         
     }
 

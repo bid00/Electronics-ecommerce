@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+9<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -119,7 +119,7 @@
         function performSearch() {
             const searchTerm = document.getElementById('search').value.toLowerCase().trim();
             if (searchTerm) {
-                const filtered = allProducts.filter(p => p.name.toLowerCase().includes(searchTerm));
+                const filtered = allProducts.filter (p=> p.name.toLowerCase().includes(searchTerm));
                 displayProducts(filtered);
             } else {
                 // If search is empty, show all products

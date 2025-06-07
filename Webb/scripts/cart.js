@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Redirect if no token
     if (!token || token === "null") {
         showToast("Please login", "danger");
-         window.location.href = "./login.html";
+        setTimeout(() => window.location.href = "./login.html", 2000);
 
         return;
     }
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (response.status === 401) {
                 showToast(data.message + " - Please login again", "danger");
-                setTimeout(() => window.location.href = "./auth.html", 2000);
+                setTimeout(() => window.location.href = "./login.html", 2000);
                 return;
             }
 

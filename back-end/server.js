@@ -11,7 +11,8 @@ import autho from "./middlewares/authoMiddleware.js";
 import corsMiddleware from "./middlewares/corsMiddleware.js";
 import mailRoutes from "./routes/mailRoutes.js";
 import bodyParser from "body-parser";
-import path from "path";
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const app = express();
 config();
@@ -20,9 +21,17 @@ const PORT = process.env.PORT || 8080;
 app.use(express.json());
 app.use(bodyParser.json());
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 //@desc server uploads
 app.use("/uploads", express.static("uploads"));
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 corsMiddleware(app);
 connectDB();
 app.use(logger);
@@ -31,10 +40,6 @@ app.use("/api/user",autho,userRoutes);
 app.use("/api/cart",autho,cartRoutes);
 app.use("/api/order",autho,orderRoutes);
 app.use("/api/mail",mailRoutes);
-
-app.get("/",(req,res)=>{
-    res.send("home");
-})
 app.use("/api/products",productRoutes);
 
 

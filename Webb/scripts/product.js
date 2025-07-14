@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const productId = new URLSearchParams(window.location.search).get("id");
+  const Base_Url = "https://electronics-ecommerce-production.up.railway.app"
   const container = document.getElementById("product-container");
   container.innerHTML = '';
 
@@ -9,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   try {
-    const res = await fetch(`http://localhost:8000/api/products/${productId}`);
+    const res = await fetch(`${Base_Url}/api/products/${productId}`);
     if (!res.ok) throw new Error("Failed to fetch product data");
 
     const product = await res.json();
@@ -60,7 +61,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
 
       try {
-        const res = await fetch("http://localhost:8000/api/cart/add", {
+        const res = await fetch(`${Base_Url}/api/cart/add`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

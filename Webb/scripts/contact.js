@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-
+const Base_Url = "https://electronics-ecommerce-production.up.railway.app"
   // Function to handle form submission
   function handleSubmit(formSelector, endpoint) {
     const form = document.querySelector(formSelector);
@@ -43,8 +43,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Contact Form
-  handleSubmit(".contact-form", "http://localhost:8000/api/mail/contact");
+  handleSubmit(".contact-form", `${Base_Url}/api/mail/contact"`);
 
   // Mail list subscribe form
-  handleSubmit(".subscribe-form", "http://localhost:8000/api/mail/subscribe");
+  handleSubmit(".subscribe-form", `${Base_Url}/api/mail/subscribe`);
 });

@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
     const productGrid = document.querySelector(".product-grid");
     const kitGrid = document.querySelector(".kit-grid");
-
+    const Base_Url = "https://electronics-ecommerce-production.up.railway.app"
     async function fetchingProducts(category) {
         try {
-            const response = await fetch(`http://localhost:8000/api/products${category ? `?category=${category}` : ""}`);
+            const response = await fetch(`${Base_Url}/api/products${category ? `?category=${category}` : ""}`);
             const products = await response.json();
 
             if (!response.ok) {

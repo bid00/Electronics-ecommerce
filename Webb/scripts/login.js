@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const token = localStorage.getItem("accessToken");
+    const Base_Url = "https://electronics-ecommerce-production.up.railway.app"
     if(token) window.location.href = "./profile.html";
 
     const loginForm = document.querySelector("#login-form");
@@ -10,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const logindata = Object.fromEntries(formData.entries());
 
         try {
-            const response = await fetch("http://localhost:8000/api/auth/login", {
+            const response = await fetch(`${Base_Url}/api/auth/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

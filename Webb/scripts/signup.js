@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
     const signupForm = document.querySelector("#signup-form");
-
+    const Base_Url = "https://electronics-ecommerce-production.up.railway.app"
     async function signup(event){
         event.preventDefault();
         const formData = new FormData(signupForm);
         const signupdata = Object.fromEntries(formData.entries());
 
         try {
-            const response= await fetch("http://localhost:8000/api/auth/signup",{
+            const response= await fetch(`${Base_Url}/api/auth/signup`,{
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

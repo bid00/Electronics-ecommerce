@@ -1,9 +1,9 @@
 const productsGrid = document.getElementById("products-grid");
 const searchInput = document.getElementById("search");
-
+const Base_Url = "https://electronics-ecommerce-production.up.railway.app"
 async function fetchingProducts(category) {
     try {
-        const response = await fetch(`http://localhost:8000/api/products${category ? `?category=${category}` : ""}`);
+        const response = await fetch(`${Base_Url}/api/products${category ? `?category=${category}` : ""}`);
         const products = await response.json();
 
         if (!response.ok) {
@@ -58,7 +58,7 @@ function renderProducts(products) {
 async function addToCart(productId) {
     try {
         const token = localStorage.getItem("accessToken");
-        const response = await fetch("http://localhost:8000/api/cart/add", {
+        const response = await fetch(`${Base_Url}/api/cart/add`, {
             method: "POST",
             headers: { 
                 "Authorization": `Bearer ${token}`,

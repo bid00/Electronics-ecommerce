@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const token = localStorage.getItem("accessToken");
+    const Base_Url = "https://electronics-ecommerce-production.up.railway.app"
 
     // Redirect if no token
     if (!token || token === "null") {
@@ -12,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Fetch and render cart
     async function fetchCart() {
         try {
-            const response = await fetch("http://localhost:8000/api/cart/", {
+            const response = await fetch(`${Base_Url}/api/cart/`, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -96,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Update Quantity
     async function updateQuantity(productId, quantity) {
         try {
-            const response = await fetch("http://localhost:8000/api/cart/update-quantity", {
+            const response = await fetch(`${Base_Url}/api/cart/update-quantity`, {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -126,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const productId = e.target.dataset.productId;
 
             try {
-                const response = await fetch("http://localhost:8000/api/cart/remove", {
+                const response = await fetch(`${Base_Url}/api/cart/remove`, {
                     method: "POST",
                     headers: {
                         "Authorization": `Bearer ${token}`,

@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", async () => {
     const form = document.querySelector(".shipping-form");
     const accessToken = localStorage.getItem("accessToken");
-
+    const Base_Url = "https://electronics-ecommerce-production.up.railway.app"
     if (!accessToken || accessToken === "null") {
         window.location.href = "./login.html";
         return;
     }
 
     try {
-        const response = await fetch("http://localhost:8000/api/user/profile", {
+        const response = await fetch(`${Base_Url}/api/user/profile`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     let lastAddress = null;
     try {
-        const res = await fetch("http://localhost:8000/api/user/addresses", {
+        const res = await fetch(`${Base_Url}/api/user/addresses`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         };
 
         try {
-            const response = await fetch("http://localhost:8000/api/order/checkout", {
+            const response = await fetch(`${Base_Url}/api/order/checkout`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

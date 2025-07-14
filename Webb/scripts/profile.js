@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const username = document.querySelector("#userName");
     const email = document.querySelector("#email");
     const phone = document.querySelector("#phone");
+    const Base_Url = "https://electronics-ecommerce-production.up.railway.app"
 
     menuItems.forEach(item => {
         item.addEventListener("click", () => {
@@ -24,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
    !accessToken || accessToken== "null"? window.location.href="./login.html":
    (async function () {
     try {
-        const response = await fetch("http://localhost:8000/api/user/profile",{
+        const response = await fetch(`${Base_Url}/api/user/profile`,{
         method:"GET",
         headers:{"authorization":`bearer ${accessToken}`}
     })
@@ -51,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const formData = Object.fromEntries(form.entries());
    
     try {
-        const response = await fetch("http://localhost:8000/api/user/updateprofile",{
+        const response = await fetch(`${Base_Url}/api/user/updateprofile`,{
         method:"PATCH",
         headers:{"Content-Type":"application/json","authorization":`bearer ${accessToken}`},
         body:JSON.stringify(formData)
@@ -71,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // This function can be called on tab click or page load
     async function loadUserOrders() {
         try {
-            const res = await fetch("http://localhost:8000/api/order/", {
+            const res = await fetch(`${Base_Url}/api/order/`, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -128,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     async function loadUserAddresses() {
         try {
-            const res = await fetch("http://localhost:8000/api/user/addresses", {
+            const res = await fetch(`${Base_Url}/api/user/addresses`, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${localStorage.getItem("accessToken")}`,

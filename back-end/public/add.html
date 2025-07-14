@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font Awesome 6 CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/Webb/Img/logo.png" type="image/png">
+    <link rel="stylesheet" href="Style.CSS" />
+    <title>Add produts</title>
+</head>
+
+<body>
+    <!--header-->
+    <header>
+        <a href="index.HTML" id="logo"><span>Elec</span>tronics</a>
+        <nav class="navbar">
+            <div class="navbar-links">
+                <a href="index.HTML">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html" id="shape">Contact Us</a>
+            </div>
+        
+            <!-- Search Bar Moved Here -->
+            <div class="navbar-search">
+                <form action="search">
+                    <input type="text" id="search" placeholder="Search for products..." />
+                    <button type="submit" id="search-button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        
+            <div class="navbar-icon">
+                <a href="login.html" title="Login"><i class="fa fa-user"></i></a>
+                <a href="cart.html" title="Cart"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+        </nav>
+    </header>
+    <main class="page">
+        <div class="addform-container">
+            <input type="text" id="name" placeholder="Product Name" />
+            <input type="text" id="category" placeholder="Category" />
+            <input type="number" id="price" placeholder="Price" />
+            <textarea id="description" placeholder="Description"></textarea>
+            <input type="file" id="image" accept="image/*" />
+            <button onclick="addProduct()">Add Product</button>
+        </div>
+
+        <div class="addproduct-list" id="addproductList">
+            <!--Image
+                Name
+                Category
+                price
+                description-->
+        </div>
+
+
+    </main>
+    <!--footer-->
+    <footer class="page-footer">
+        <div class="footer-textp">
+            <p>
+                &copy;<span id="date">2025</span>
+                <span class="footer-logo">HNU Electronics</span>
+                Build by <a href="">HNU</a>
+            </p>
+        </div>
+        <hr>
+        <div class="footer-contact">
+            <h3>Follow HNU <span>Elec</span>tronics on</h3>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

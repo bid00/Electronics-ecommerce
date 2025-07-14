@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/Webb/Img/logo.png" type="image/png">
+    <link rel="stylesheet" href="Style.CSS" />
+    <title>Shipping</title>
+</head>
+
+<body>
+    <!--header-->
+    <header>
+        <a href="index.HTML" id="logo"><span>Elec</span>tronics</a>
+        <nav class="navbar">
+            <div class="navbar-links">
+                <a href="index.HTML">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html" id="shape">Contact Us</a>
+            </div>
+        
+            <!-- Search Bar -->
+            <div class="navbar-search">
+                <form action="search">
+                    <input type="text" id="search" placeholder="Search for products..." />
+                    <button type="submit" id="search-button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        
+            <div class="navbar-icon">
+                <a href="login.html" title="Login"><i class="fa fa-user"></i></a>
+                <a href="cart.html" title="Cart" id="active"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="page">
+        <!-- Breadcrumb navigation -->
+        <nav class="breadcrumb-container" aria-label="breadcrumb">
+            <ol class="breadcrumb-custom">
+                <li class="breadcrumb-item">
+                    <i class="fas fa-shopping-cart"></i> Cart
+                </li>
+                <li class="breadcrumb-item active">
+                    <i class="fas fa-map-marker-alt"></i> Address Information
+                </li>
+                <li class="breadcrumb-item">
+                    <i class="fas fa-credit-card"></i> Payment
+                </li>
+            </ol>
+        </nav>
+
+        <section class="sform-section">
+            <h2>Shipping Address</h2>
+            <form class="shipping-form">
+                <label for="fullname">Full name</label>
+                <input type="text" id="fullname" name="fullname"/>
+
+                <div class="form-row">
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" />
+                    </div>
+                    <div>
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone" />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div>
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" name="company" />
+                    </div>
+                    <div>
+                        <label for="vat">VAT</label>
+                        <input type="text" id="vat" name="vat" />
+                    </div>
+                </div>
+
+                <label for="street">Street and Number</label>
+                <input type="text" id="street" name="street" />
+
+                <label for="apartment">Apartment, suite, etc.</label>
+                <input type="text" id="apartment" name="apartment" />
+
+                <div class="form-row">
+                    <div>
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city" />
+                    </div>
+                    <div>
+                        <label for="zip">Zip Code</label>
+                        <input type="text" id="zip" name="zip" />
+                    </div>
+                </div>
+
+                <label for="country">Country</label>
+                <select id="country" name="country">
+                    <option value="">Select your Country</option>
+                    <option value="eg">🇪🇬 Egypt</option>
+                    <option value="us">🇺🇸 USA</option>
+                    <option value="de">🇩🇪 Germany</option>
+                    <option value="fr">🇫🇷 France</option>
+                    <option value="sa">🇸🇦 Saudi Arabia</option>
+                    <option value="jp">🇯🇵 Japan</option>
+                </select>
+
+
+                <div class="form-buttons">
+                    <button type="reset" class="btn discard">◀ Discard</button>
+                    <button type="submit" class="btn save">Save address ▶</button>
+                </div>
+            </form>
+        </section>
+
+    </main>
+    <!--footer-->
+    <footer class="page-footer">
+        <div class="footer-textp">
+            <p>
+                &copy;<span id="date">2025</span>
+                <span class="footer-logo">HNU Electronics</span>
+                Build by <a href="">HNU</a>
+            </p>
+        </div>
+        <hr>
+        <div class="footer-contact">
+            <h3>Follow HNU <span>Elec</span>tronics on</h3>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+     <!-- Toast container -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+         <div id="responseToast" class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body" id="toastMessage">
+                      <!-- Message will appear here -->
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+    <script src="./scripts/utilis.js"></script>
+    <script src="./scripts/order.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

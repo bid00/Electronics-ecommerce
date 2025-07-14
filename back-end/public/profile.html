@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font Awesome 6 CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/Webb/Img/logo.png" type="image/png">
+    <link rel="stylesheet" href="Style.CSS" />
+    <title>My Portal</title>
+</head>
+
+<body>
+    <!--header-->
+    <header>
+        <a href="index.HTML" id="logo"><span>Elec</span>tronics</a>
+        <nav class="navbar">
+            <div class="navbar-links">
+                <a href="index.HTML">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html" id="shape">Contact Us</a>
+            </div>
+        
+            <!-- Search Bar Moved Here -->
+            <div class="navbar-search">
+                <form action="search">
+                    <input type="text" id="search" placeholder="Search for products..." />
+                    <button type="submit" id="search-button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        
+            <div class="navbar-icon">
+                <a href="login.html" title="Login" id="active"><i class="fa fa-user"></i></a>
+                <a href="cart.html" title="Cart"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+        </nav>
+    </header>
+    <div class="account-container">
+        <aside class="account-sidebar">
+            <ul class="account-menu">
+                <li class="account-menu-item active" data-section="dashboard">Dashboard</li>
+                <li class="account-menu-item" data-section="orders" onclick="loadUserOrders()">Orders</li>
+                <li class="account-menu-item" data-section="addresses" onclick="loadUserAddresses()">Addresses</li>
+                <li class="account-menu-item" data-section="details">Account details</li>
+                <li class="account-menu-item" onclick="logout()">Log out</li>
+            </ul>
+        </aside>
+        <main class="account-main">
+            <!-- Dashboard Section -->
+            <div id="dashboard-content" class="account-section">
+                <h1 class="account-title">My Account</h1>
+                <div class="account-alert">
+                    Your account with HNU Electronics is using a temporary password. We emailed you a link to change
+                    your password.
+                </div>
+                <p class="account-greeting">
+                    Hello <strong id="userName">Guest</strong> (<a href="#" onclick="logout()">Log out</a>)
+                </p>
+                <p class="account-links">
+                    From your account dashboard you can view your
+                    <a href="#">recent orders</a>, manage your
+                    <a href="#">shipping and billing addresses</a>, and
+                    <a href="#">edit your password and account details</a>.
+                </p>
+            </div>
+
+            <!-- Orders Section -->
+            <div id="orders-content" class="account-section" style="display: none;">
+                <h1 class="account-title">My Orders</h1>
+                <p>Here is a list of your recent orders.</p>
+                <div id="ordersList">
+                    <!-- orders data -->
+                </div>
+            </div>
+
+            <!-- Addresses Section -->
+            <div id="addresses-content" class="account-section" style="display: none;">
+                <h1 class="account-title">My Addresses</h1>
+                <p>Manage your shipping and billing addresses here.</p>
+                <div id="addresses-list" class="addresses-list">
+                    <!-- adress data here -->
+                </div>
+            </div>
+
+            <!-- Account Details Section -->
+            <div id="details-content" class="account-section" style="display: none;">
+                <h1 class="account-title">Account Details</h1>
+                <p>Edit your account info here (name, email, password, etc).</p>
+                <form id="account-details-form" class="account-form">
+                    <div class="form-group">
+                        <label for="fullName">Full Name:</label>
+                        <input type="text" id="fullName" name="name"     placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address:</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">phone:</label>
+                        <input type="phone" id="phone" name="phone" placeholder="Enter new phone">
+                    </div>
+
+                    <button type="submit" class="btn-save">Save Changes</button>
+                </form>
+            </div>
+        </main>
+
+    </div>
+    <!--footer-->
+    <footer class="page-footer">
+        <div class="footer-textp">
+            <p>
+                &copy;<span id="date">2025</span>
+                <span class="footer-logo">HNU Electronics</span>
+                Build by <a href="">HNU</a>
+            </p>
+        </div>
+        <hr>
+        <div class="footer-contact">
+            <h3>Follow HNU <span>Elec</span>tronics on</h3>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+     <!-- Toast container -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+         <div id="responseToast" class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body" id="toastMessage">
+                      <!-- Message will appear here -->
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+    <script src="./scripts/utilis.js"></script>
+    <script src="./scripts/profile.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+</body>
+
+</html>

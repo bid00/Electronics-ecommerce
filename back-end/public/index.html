@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font Awesome 6 CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="./Webb/Img/logo.png" type="image/png">
+    <link rel="stylesheet" href="Style.CSS" />
+    <title>HNU Electronics</title>
+</head>
+
+<body>
+    <!--header-->
+    <header>
+        <a href="index.HTML" id="logo"><span>Elec</span>tronics</a>
+        <nav class="navbar">
+            <div class="navbar-links">
+                <a href="index.HTML" id="active">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html" id="shape">Contact Us</a>
+            </div>
+
+            <!-- Search Bar Moved Here -->
+            <div class="navbar-search" style="position: relative;">
+                <form onsubmit="return handleSearch(event)">
+                    <input type="text" id="search" placeholder="Search for products..." oninput="searchSuggestions()"
+                        autocomplete="off" />
+                    <button type="submit" id="search-button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+                <div id="suggestions" class="suggestions-box"></div>
+            </div>
+
+
+            <div class="navbar-icon">
+                <a href="login.html" title="Login"><i class="fa fa-user"></i></a>
+                <a href="cart.html" title="Cart"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+        </nav>
+    </header>
+    <main class="page">
+        <div class="hero">
+            <div class="hero-container">
+                <div class="hero-text">
+                    <h1>Welcome to HNU <span>Elec</span>tronics</h1>
+                    <p>Your one-stop shop for all <span>Electronic</span> needs.</p>
+                </div>
+                <a href="shop.html" class="btn">Shop Now</a>
+            </div>
+        </div>
+        <div class="category-container">
+            <div class="category-item">
+                <i class="fa-solid fa-microchip"></i>
+                <h3>Microcontrollers</h3>
+            </div>
+            <div class="category-item">
+                <i class="fa-solid fa-bug"></i>
+                <h3>ICs</h3>
+            </div>
+            <div class="category-item">
+                <i class="fa-solid fa-gears"></i>
+                <h3>Tools</h3>
+            </div>
+            <div class="category-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Arduino_Logo.svg" alt="Arduino">
+                <h3>Arduino Boards</h3>
+            </div>
+        </div>
+
+        <section class="products-section">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="product-grid">
+                <!-- Products fetched from back end will be here -->
+            </div>
+        </section>
+
+        <div class="photo">
+            <div class="photo-container">
+                <div class="photo-text">
+                    <h2>Discover the Latest in HNU <span>Elec</span>tronics</h2>
+                    <p>Explore our wide range of products and find what you need.</p>
+                </div>
+                <a href="shop.html" class="btn">Shop Now</a>
+            </div>
+        </div>
+
+        <section class="kits-section">
+            <h2>Explore our Training Kits for Microcontrollers</h2>
+            <h3>Perfect for Electronic Labs or Personal Learning <i class="fas fa-microchip"></i></h3>
+            <div class="kit-grid">
+                <!-- products fetched from back-end -->
+            </div>
+        </section>
+
+        <div class="process">
+            <div class="process-title">
+                <h2>How It Works</h2>
+            </div>
+            <div class="process-container">
+                <div class="process-item">
+                    <i class="fa fa-user"></i>
+                    <h3>Sign in</h3>
+                    <p>Enter your detailed contact information</p>
+                </div>
+                <div class="process-item">
+                    <i class="fa fa-search"></i>
+                    <h3>Search</h3>
+                    <p>Find the products you need.</p>
+                </div>
+                <div class="process-item">
+                    <i class="fa fa-shopping-cart"></i>
+                    <h3>Add to Cart</h3>
+                    <p>Add your favorite items to the cart.</p>
+                </div>
+                <div class="process-item">
+                    <i class="fa fa-credit-card"></i>
+                    <h3>Checkout</h3>
+                    <p>Complete your purchase securely.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!--footer-->
+    <footer class="page-footer">
+        <div class="footer-textp">
+            <p>
+                &copy;<span id="date">2025</span>
+                <span class="footer-logo">HNU Electronics</span>
+                Build by <a href="">HNU</a>
+            </p>
+        </div>
+        <hr>
+        <div class="footer-contact">
+            <h3>Follow HNU <span>Elec</span>tronics on</h3>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+     <!-- Toast container -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+         <div id="responseToast" class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body" id="toastMessage">
+                      <!-- Message will appear here -->
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+    <script src="./scripts/utilis.js"></script>
+    <script src="./scripts/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

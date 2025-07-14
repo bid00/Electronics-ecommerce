@@ -11,6 +11,7 @@ import autho from "./middlewares/authoMiddleware.js";
 import corsMiddleware from "./middlewares/corsMiddleware.js";
 import mailRoutes from "./routes/mailRoutes.js";
 import bodyParser from "body-parser";
+import path from "path";
 
 const app = express();
 config();
@@ -21,6 +22,7 @@ app.use(bodyParser.json());
 
 //@desc server uploads
 app.use("/uploads", express.static("uploads"));
+app.use(express.static('public'));
 corsMiddleware(app);
 connectDB();
 app.use(logger);

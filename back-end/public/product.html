@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font Awesome 6 CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/Webb/Img/logo.png" type="image/png">
+    <link rel="stylesheet" href="Style.CSS" />
+    <title>Product</title>
+</head>
+
+<body>
+    <!--header-->
+    <header>
+        <a href="index.HTML" id="logo"><span>Elec</span>tronics</a>
+        <nav class="navbar">
+            <div class="navbar-links">
+                <a href="index.HTML">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html" id="shape">Contact Us</a>
+            </div>
+        
+            <!-- Search Bar Moved Here -->
+            <div class="navbar-search">
+                <form action="search">
+                    <input type="text" id="search" placeholder="Search for products..." />
+                    <button type="submit" id="search-button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        
+            <div class="navbar-icon">
+                <a href="login.html" title="Login"><i class="fa fa-user"></i></a>
+                <a href="cart.html" title="Cart"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+        </nav>
+    </header>
+    <main class="page">
+        <div class="container" id="product-container">
+            <div class="image-section">
+                <img src="/Webb/Img/4.jpg" alt="ARM (Panda) kit">
+            </div>
+
+            <div class="info-section">
+                <div class="productp-title">Kit ARM (Panda) Development & Training System Based on STM32F103C8T6</div>
+                <div class="details">
+                    With a Full Set of Accessories (OLED LCD + Blue Bill + ST LINK + Cable) Perfect for Electronic Labs
+                    or Personal Learning
+                </div>
+                <div class="price">1,750.00 EGP</div>
+
+                <div class="qty">
+                    Quantity:
+                    <input type="number" value="1" min="1">
+                </div>
+
+                <a href="#" class="btn" onclick="addToCart(); event.preventDefault();">Add to Cart</a>
+
+                <div class="desc">
+                    <p><strong>Internal Reference:</strong> DOUBLE.FACE.GL7445</p>
+                    <p><strong>Shipping:</strong> 2-3 Business Days</p>
+                    <p><strong>Pick up from:</strong> HNU <span>Elec</span>tronics</p>
+                </div>
+
+            </div>
+            <div class="specifications">
+                <h2>General Description</h2>
+                <p>Panda kit is an ARM development kit based on Blue Pill module which supports 32-Bit ARM Cortex-M3
+                    microprocessor STM32F103C8T6.</p>
+
+                <h2>Panda Kit Features</h2>
+                <ul>
+                    <li>Supports Cortex-M3 (STM32F103C8T6).</li>
+                    <li>USB or adaptor powered.</li>
+                    <li>16 input switches with two operating modes.</li>
+                    <li>Output unit includes:
+                        <ul>
+                            <li>Five output LEDs</li>
+                            <li>Two output relays with LED indicators</li>
+                            <li>One output buzzer</li>
+                        </ul>
+                    </li>
+                    <li>2X16 Character LCD with contrast and backlight control.</li>
+                    <li>128x64 I²C 0.96" OLED display.</li>
+                    <li>Three digits 7-segment display.</li>
+                    <li>Analog input.</li>
+                    <li>USB/TTL serial converter CH340.</li>
+                    <li>All GPIOs are brought out to pin headers.</li>
+                </ul>
+
+                <h2>Package Includes</h2>
+                <ul>
+                    <li>Panda Kit</li>
+                    <li>Blue Pill module (STM32F103C8T6)</li>
+                    <li>ST-Link V2 Programmer</li>
+                    <li>0.96" 128x64 OLED display</li>
+                    <li>USB cable A/B type</li>
+                </ul>
+            </div>
+        </div>
+
+    </main>
+    <!--footer-->
+    <footer class="page-footer">
+        <div class="footer-textp">
+            <p>
+                &copy;<span id="date">2025</span>
+                <span class="footer-logo">HNU Electronics</span>
+                Build by <a href="">HNU</a>
+            </p>
+        </div>
+        <hr>
+        <div class="footer-contact">
+            <h3>Follow HNU <span>Elec</span>tronics on</h3>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+     <!-- Toast container -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+         <div id="responseToast" class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body" id="toastMessage">
+                      <!-- Message will appear here -->
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+    <script src="./scripts/utilis.js"></script>
+    <script src="./scripts/product.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

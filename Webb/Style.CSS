@@ -389,7 +389,7 @@ header {
 /*hero*/
 .hero {
     height: 50vh;
-    background: url('/Webb/Img/computer-chip-connects-electrical-components-powering-global-communications-industry-generated-by-artificial-intelligence.jpg') center/cover no-repeat;
+    background: url('./Img/computer-chip-connects-electrical-components-powering-global-communications-industry-generated-by-artificial-intelligence.jpg') center/cover no-repeat;
     margin-bottom: 2rem;
     border-radius: 20px 20px 20px 20px;
     padding: 30px;
@@ -735,7 +735,7 @@ header {
 /* photo */
 .photo {
     height: 37vh;
-    background: url('/Webb/Img/motherboard-background.jpg') center/cover no-repeat;
+    background: url('./Img/motherboard-background.jpg') center/cover no-repeat;
     margin-bottom: 2rem;
     border-radius: 20px;
     padding: 30px;
@@ -1937,7 +1937,7 @@ header {
 .side-image {
     width: 900px;
     height: 400px;
-    background: url('/Webb/Img/home-made-robot-desk.jpg') center/cover no-repeat;
+    background: url('./Img/home-made-robot-desk.jpg') center/cover no-repeat;
     margin-bottom: 2rem;
     border-radius: 20px;
     padding: 30px;

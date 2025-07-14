@@ -1,12 +1,9 @@
 import { connect } from "mongoose";
 
-const mongoUrl = "mongodb://localhost:27017/HNUElectronics"
+const mongoUrl = process.env.MONGODB_URL;
 const connectDB = async () => {
     try {
-        await connect(mongoUrl,{
-            useNewUrlParser:true,
-            useUnifiedTopology:true,
-        });
+        await connect(mongoUrl);
         console.log("MongoDB connected");
         
     } catch (error) {
